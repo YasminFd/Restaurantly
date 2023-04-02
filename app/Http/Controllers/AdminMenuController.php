@@ -20,7 +20,6 @@ class AdminMenuController extends Controller
      */
     public function index()
     {
-        //
         return view('admin.edits.addCategory');
 
     }
@@ -42,7 +41,7 @@ class AdminMenuController extends Controller
         $category=new category();
         $category->name=$req->name;
         $category->save();
-        return redirect('/admin-menu');
+        return redirect('/admin-menu')->with('success','Menu created successfully');
     }
 
     /**
@@ -73,7 +72,7 @@ class AdminMenuController extends Controller
         $menu=category::find($id);
         $menu->name=$req->name;
         $menu->save();
-        return redirect('/admin-menu');
+        return redirect('/admin-menu')->with('success','Menu updated successfully');
     }
 
     /**
@@ -81,13 +80,12 @@ class AdminMenuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
         $menu = category::findOrFail($id);
         $meals = menu_item::where('category_id', $id)->get();
         foreach($meals as $meal) {
             $meal->delete();
         }
         $menu->delete();
-        return redirect('/admin-menu')->with('success', 'Category deleted successfully');
+        return redirect('/admin-menu')->with('success', 'Menu deleted successfully');
     }
 }

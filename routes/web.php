@@ -55,26 +55,24 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin-contact', function () {
         return view('admin.adminContacts');
     })->name('admin.contact');
-    
-    Route::resource('/admin-reservations',AdminReservationController::class);
-    Route::resource('/admin-tables',AdminTableController::class);
-    
+
+    Route::resource('/admin-reservations', AdminReservationController::class);
+    Route::resource('/admin-tables', AdminTableController::class);
+
     Route::get('/admin-reviews', function () {
         return view('admin.adminReviews');
-    })->name('admin.reviews'); 
-    
+    })->name('admin.reviews');
+
     Route::get('/admin-menu', [menuController::class, 'editMenu'])->name('admin.menus');
 
-    Route::resource('/admin-meal',AdminMealController::class);
-    Route::resource('/admin-category',AdminMenuController::class);
+    Route::resource('admin-meal', AdminMealController::class);
+    Route::resource('admin-category', AdminMenuController::class);
 
     Route::get('/admin-orders', function () {
         return view('admin.adminOrders');
     })->name('admin.orders');
-    
+
     Route::get('/admin-users', function () {
         return view('admin.adminUsers');
-
-
     })->name('admin.users');
 });

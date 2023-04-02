@@ -85,7 +85,7 @@ use Illuminate\Support\Facades\DB;
                 'category_id' => '3',
                 'description'=> 'Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette',
                 'price' => '9.95',
-                'image' => '/images/menu/lobster-roll.jpg',
+                'image' => '/images/menu/spinach-salad.jpg',
                 'updated_at' => now(),
                 'created_at' => now(),
             ],[

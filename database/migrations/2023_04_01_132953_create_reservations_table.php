@@ -21,6 +21,7 @@ return new class extends Migration
             $table->dateTime('res_date');
             $table->foreignId('table_id')->constrained('tables');
             $table->integer('guest_number');
+            $table->foreignId('branch_id')->constrained('branches');
         });
     }
 
