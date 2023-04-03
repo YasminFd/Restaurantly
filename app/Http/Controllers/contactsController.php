@@ -6,8 +6,9 @@ use App\Models\branch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Mail;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
+use App\Mail\FromCustomer;
 
 class contactsController extends Controller
 {
@@ -16,5 +17,10 @@ class contactsController extends Controller
         $data = DB::table('branches')->get();
         return view('contact',['contact'=>$data]);
     }
-    
+
+    function sendInfo(Request $req){
+        Mail::to($req->email)->send(new TestMail());
+        Mail::to("restaurantly@gmail.com")->send(new FromCustomer($req));
+        return redirect()->route('contact')->with('success', 'Email sent successfully!');
+    }
 }

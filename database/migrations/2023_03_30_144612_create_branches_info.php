@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('url_address');
             $table->text('location');
             $table->string('phone_number');
-            $table->integer('capacity');
             $table->timestamps();
         });
     }

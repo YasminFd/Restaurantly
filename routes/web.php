@@ -59,6 +59,10 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('/admin-reservations', AdminReservationController::class);
     Route::resource('/admin-tables', AdminTableController::class);
 
+    Route::resource('/admin-orders', AdminOrdersController::class);
+    Route::resource('/admin-users', AdminUsersController::class);
+    Route::resource('/admin-contacts', AdminContactsController::class);
+
     Route::get('/admin-reviews', function () {
         return view('admin.adminReviews');
     })->name('admin.reviews');

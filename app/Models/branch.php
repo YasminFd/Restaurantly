@@ -11,8 +11,7 @@ class branch extends Model
         'name',
         'url_address',
         'location',
-        'phone_number',
-        'capacity'
+        'phone_number'
     ];
     use HasFactory;
     public function tables()

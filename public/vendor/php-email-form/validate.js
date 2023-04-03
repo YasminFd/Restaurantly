@@ -3,6 +3,7 @@
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
 */
+/*
 (function () {
   "use strict";
 
@@ -78,4 +79,4 @@
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
-})();
+})();*/

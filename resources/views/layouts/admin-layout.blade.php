@@ -20,8 +20,8 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('admin/css/vertical-layout-light/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/css/admin.css') }}" >
-     <!-- endinject -->
+    <link rel="stylesheet" href="{{ asset('admin/css/admin.css') }}">
+    <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
 </head>
 
@@ -108,7 +108,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin.contact') }}">
+                    <a class="nav-link" href="/admin-contacts">
                         <i class="menu-icon mdi mdi-chart-line"></i>
                         <span class="menu-title">Contacts</span>
                         <i class="menu-arrow"></i>
@@ -135,20 +135,20 @@
                         <span class="menu-title">Reviews</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="icons">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" {{ Request::is('/') ? 'active' : '' }}
-                                    href="{{ route('admin.orders') }}">Orders</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin.users') }}">
+                    <a class="nav-link" href="/admin-users">
                         <i class="menu-icon mdi mdi-account-circle-outline"></i>
                         <span class="menu-title">User Pages</span>
                         <i class="menu-arrow"></i>
                     </a>
-
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-orders">
+                        <i class="menu-icon mdi mdi-chart-line"></i>
+                        <span class="menu-title">Orders</span>
+                        <i class="menu-arrow"></i>
+                    </a>
                 </li>
 
             </ul>
@@ -164,13 +164,15 @@
 
                 @if (session()->has('success'))
                     <div class="mb-4 rounded-lg bg-green-100 p-4 text-sm text-green-700 dark:bg-green-200 dark:text-green-800"
-                        role="alert"><span class="font-medium">Success alert!</span> {{ session()->get('success') }}
+                        role="alert"><span class="font-medium">Success alert!</span>
+                        {{ session()->get('success') }}
                     </div>
                 @endif
 
                 @if (session()->has('warning'))
                     <div class="mb-4 rounded-lg bg-yellow-100 p-4 text-sm text-yellow-700 dark:bg-yellow-200 dark:text-yellow-800"
-                        role="alert"><span class="font-medium">Warning alert!</span> {{ session()->get('warning') }}
+                        role="alert"><span class="font-medium">Warning alert!</span>
+                        {{ session()->get('warning') }}
                     </div>
                 @endif
 
