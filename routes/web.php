@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\BranchController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\MealController;
 use App\Http\Controllers\admin\ReviewController;
+use App\Http\Controllers\admin\TestimonialController;
 
 /*
 /*
@@ -71,6 +72,8 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('admin-categories', CategoryController::class);
 
     Route::resource('admin-orders',OrderController::class);
+
+    Route::resource('admin-testimonials',TestimonialController::class);
 
     Route::resource('admin-users',UsersController::class);
 });

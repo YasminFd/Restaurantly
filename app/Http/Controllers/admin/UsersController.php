@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -15,7 +18,8 @@ class UsersController extends Controller
     public function index()
     {
         //
-        return view('admin.users.index');
+        $data=User::all();
+        return view('admin.users.index',['data'=>$data]);
     }
 
     /**
@@ -24,14 +28,24 @@ class UsersController extends Controller
     public function create()
     {
         //
+        return view('admin.users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
         //
+        $user = new user();
+        $user->name=$req->name;
+        $user->email=$req->email;
+        $user->password=Hash::make($req->password);
+        $user->user_type=1;
+        $user->created_at= now();
+        $user->updated_at = now();
+        $user->save();
+        return redirect(route('admin-users.index'))->with('success','employee created successfully');
     }
 
     /**
@@ -40,6 +54,7 @@ class UsersController extends Controller
     public function show(string $id)
     {
         //
+
     }
 
     /**
@@ -63,6 +78,8 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect(route('admin-users.index'))->with('danger', 'Employee deleted successfully');
     }
 }

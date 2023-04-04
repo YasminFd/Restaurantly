@@ -70,7 +70,7 @@
                                 {{ $reservation->guest_number }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $reservation->branch_id }}
+                                {{ $reservation->branch->name }}
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('admin-reservations.edit', $reservation->id) }}"

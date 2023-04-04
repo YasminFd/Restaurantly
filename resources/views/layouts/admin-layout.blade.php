@@ -101,14 +101,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin-categories.index') }}">
+                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }}
+                        href="{{ route('admin-categories.index') }}">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
                         <span class="menu-title">Categories</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin-meals.index') }}">
+                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }}
+                        href="{{ route('admin-meals.index') }}">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
                         <span class="menu-title">Meals</span>
                         <i class="menu-arrow"></i>
@@ -137,7 +139,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin-reviews.index') }}">
+                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }}
+                        href="{{ route('admin-reviews.index') }}">
                         <i class="menu-icon mdi mdi-layers-outline"></i>
                         <span class="menu-title">Reviews</span>
                         <i class="menu-arrow"></i>
@@ -151,13 +154,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin-orders.index')}}">
+                    <a class="nav-link" href="{{ route('admin-orders.index') }}">
                         <i class="menu-icon mdi mdi-chart-line"></i>
                         <span class="menu-title">Orders</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin-testimonials.index') }}">
+                        <i class="menu-icon mdi mdi-chart-line"></i>
+                        <span class="menu-title">Testimonials</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                </li>
             </ul>
 
         </nav>

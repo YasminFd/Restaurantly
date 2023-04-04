@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
          */
         public function run()
         {
-            DB::table('menu_items')->insert([[
+            DB::table('meals')->insert([[
                 
                     'name' => 'Lobster Bisque',
                     'category_id' => '4',

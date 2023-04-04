@@ -27,4 +27,8 @@ class Reservation extends Model
     {
         return $this->belongsTo(Table::class);
     }
+
+    public function branch(){
+        return $this->belongsTo(branch::class);
+    }
 }

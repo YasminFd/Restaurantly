@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Enums\TableStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationStoreRequest;
+use App\Models\branch;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -71,15 +72,28 @@ class ReservationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $reservation = reservation::findOrFail($id);
+        $branches = branch::all();
+        $tables = table::all();
+        return view('admin.reservations.edit',['reservation'=>$reservation,'branches'=>$branches,'tables'=>$tables]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $req, string $id)
     {
-        //
+        $reservation = reservation::findOrFail($id);
+        $reservation->first_name = $req->first_name;
+        $reservation->last_name = $req->last_name;
+        $reservation->email = $req->email;
+        $reservation->phone_number = $req->phone_number;
+        $reservation->res_date = $req->res_date;
+        $reservation->table_id = $req->table_id;
+        $reservation->guest_number = $req->guest_number;
+        $reservation->branch_id = $req->branch_id;
+        $reservation->save();
+        return redirect(route('admin-reservations.index'))->with('success','Reservation updated successfully');
     }
 
     /**
