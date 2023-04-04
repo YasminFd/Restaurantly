@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Enums\TableStatus;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationStoreRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -9,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use App\Models\table;
 use App\Models\reservation;
-class AdminReservationController extends Controller
+class ReservationController extends Controller
 {
 
     
@@ -26,7 +28,7 @@ class AdminReservationController extends Controller
     public function index()
     {
         $reservations= reservation::all();
-        return view('admin.adminReservations',['reservations'=>$reservations]);
+        return view('admin.reservations.index',['reservations'=>$reservations]);
     }
 
     /**
@@ -36,7 +38,7 @@ class AdminReservationController extends Controller
     {
         $data = $this->getBranches();
         $tables = Table::all();
-        return view('admin.edits.addReservation',['data'=>$data, 'tables'=>$tables]);
+        return view('admin.reservations.create',['data'=>$data, 'tables'=>$tables]);
     }
 
     /**
@@ -54,7 +56,7 @@ class AdminReservationController extends Controller
         $reservation->guest_number = $req->guest_number;
         $reservation->branch_id = $req->branch_id;
         $reservation->save();
-        return redirect('/admin-reservations');
+        return redirect(route('admin-reservations.index'))->with('success','Reservation created successfully');
     }
     /**
      * Display the specified resource.
@@ -85,6 +87,8 @@ class AdminReservationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $reservation = reservation::findOrFail($id);
+        $reservation->delete();
+        return redirect(route('admin-reservations.index'))->with('danger','Reservation deleted successfully');
     }
 }

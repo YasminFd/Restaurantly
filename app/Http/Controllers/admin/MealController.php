@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Database\Eloquent\Model;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Models\menu_item;
-use App\Models\category;
-use DateTime;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Response;
 use App\Http\Requests\MealStoreRequest;
 
-class AdminMealController extends Controller
+class MealController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,9 +24,10 @@ class AdminMealController extends Controller
     }
     public function index()
     {
-        //
-        $categories=$this->getCategory();
-        return view('admin.edits.addMeal', ['data' => $categories]);
+        $menus = DB::table('menu_items')
+        ->select('*')
+        ->get();
+        return view('admin.meals.index', ['data2' => $menus]);
     }
 
     /**
@@ -41,7 +37,7 @@ class AdminMealController extends Controller
     {
         //
         $categories = $this->getCategory();
-        return view('admin.edits.addMeal', ['data' => $categories]);
+        return view('admin.meals.create', ['data' => $categories]);
     }
 
     /**
@@ -63,7 +59,7 @@ class AdminMealController extends Controller
                 $item->category_id=$req->category_id;
                 $item->image="/images/menu/".$req->image->getClientOriginalName();
                 $item->save();
-                return redirect('/admin-menu');
+                return redirect(route('admin-meals.index'))->with('success','Mean created successfully');
     }
 
     /**
@@ -71,11 +67,7 @@ class AdminMealController extends Controller
      */
     public function show(string $id)
     {
-        //
-        $meal = menu_item::findOrFail($id);
-        $categories=$this->getCategory();
-        return view('admin.edits.editMeal',['data1'=>$meal,'data'=>$categories]);
-        
+         
     }
 
     /**
@@ -83,8 +75,9 @@ class AdminMealController extends Controller
      */
     public function edit(string $id)
     {
-        //
-
+        $meal = menu_item::findOrFail($id);
+        $categories=$this->getCategory();
+        return view('admin.meals.edit',['data1'=>$meal,'data'=>$categories]);
     }
 
     /**
@@ -110,7 +103,7 @@ class AdminMealController extends Controller
         $meal->description=$req->description;
         $meal->category_id=$req->category_id;
         $meal->save();
-        return redirect('/admin-menu');
+        return redirect(route('admin-meals.index'))->with('success','Meal updated successfully');
     }
 
     /**
@@ -125,6 +118,6 @@ class AdminMealController extends Controller
             File::delete($path);
         }
         $meal->delete();
-        return redirect('/admin-menu')->with('success', 'Meal deleted successfully');
+        return redirect(route('admin-meals.index'))->with('danger', 'Meal deleted successfully');
     }
 }

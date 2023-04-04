@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\branch;
 
-class AdminContactsController extends Controller
+class BranchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
         $branches=branch::all();
-        return view('admin.adminContacts',['data'=>$branches]);
+        return view('admin.branches.index',['data'=>$branches]);
     }
 
     /**
@@ -24,8 +24,7 @@ class AdminContactsController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.edits.addBranch');
+        return view('admin.branches.create');
 
     }
 
@@ -41,7 +40,7 @@ class AdminContactsController extends Controller
         $branch->location=$req->location;
         $branch->url_address=$req->url_address;
         $branch->save();
-        return redirect('/admin-contacts');
+        return redirect(route('admin-branches.index'));
     }
 
     /**
@@ -49,9 +48,7 @@ class AdminContactsController extends Controller
      */
     public function show(string $id)
     {
-        //
-        $menu = branch::findOrFail($id);
-        return view('admin.edits.editBranch',['data'=>$menu]);
+        
     }
 
     /**
@@ -59,7 +56,8 @@ class AdminContactsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $menu = branch::findOrFail($id);
+        return view('admin.branches.edit',['data'=>$menu]);
     }
 
     /**
@@ -74,7 +72,7 @@ class AdminContactsController extends Controller
         $branch->location=$req->location;
         $branch->url_address=$req->url_address;
         $branch->save();
-        return redirect('/admin-contacts');
+        return redirect(route('admin-branches.index'))->with('success', 'Branch updated successfully');
     }
 
     /**
@@ -85,6 +83,6 @@ class AdminContactsController extends Controller
         //
         $branch = branch::findOrFail($id);
         $branch->delete();
-        return redirect('/admin-contacts')->with('success', 'Category deleted successfully');
+        return redirect(route('admin-branches.index'))->with('success', 'Branch deleted successfully');
     }
 }

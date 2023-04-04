@@ -101,21 +101,28 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin.menus') }}">
+                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin-categories.index') }}">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
-                        <span class="menu-title">Menus</span>
+                        <span class="menu-title">Categories</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-contacts">
+                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin-meals.index') }}">
+                        <i class="menu-icon mdi mdi-card-text-outline"></i>
+                        <span class="menu-title">Meals</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin-branches.index') }}">
                         <i class="menu-icon mdi mdi-chart-line"></i>
-                        <span class="menu-title">Contacts</span>
+                        <span class="menu-title">Branches</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-reservations">
+                    <a class="nav-link" href="{{ route('admin-reservations.index') }}">
                         <i class="menu-icon mdi mdi-table"></i>
                         <span class="menu-title">Reservations</span>
                         <i class="menu-arrow"></i>
@@ -123,28 +130,28 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-tables">
+                    <a class="nav-link" href="{{ route('admin-tables.index') }}">
                         <i class="menu-icon mdi mdi-table"></i>
                         <span class="menu-title">Tables</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin.reviews') }}">
+                    <a class="nav-link" {{ Request::is('/') ? 'active' : '' }} href="{{ route('admin-reviews.index') }}">
                         <i class="menu-icon mdi mdi-layers-outline"></i>
                         <span class="menu-title">Reviews</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-users">
+                    <a class="nav-link" href="{{ route('admin-users.index') }}">
                         <i class="menu-icon mdi mdi-account-circle-outline"></i>
                         <span class="menu-title">User Pages</span>
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-orders">
+                    <a class="nav-link" href="{{route('admin-orders.index')}}">
                         <i class="menu-icon mdi mdi-chart-line"></i>
                         <span class="menu-title">Orders</span>
                         <i class="menu-arrow"></i>

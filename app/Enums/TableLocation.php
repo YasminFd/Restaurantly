@@ -3,8 +3,8 @@ namespace App\Enums;
 
 enum TableLocation : string
 {
-    case Front = 'front';
-    case Inside = 'inside';
+    case Front = 'Front';
+    case Inside = 'Inside';
     case Outside = 'Outside';
 }
 ?>

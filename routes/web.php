@@ -1,14 +1,20 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\contactsController;
 use App\Http\Controllers\mailController;
-use App\Http\Controllers\AdminMealController;
-use App\Http\Controllers\AdminMenuController;
-use App\Http\Controllers\AdminTableController;
-use App\Http\Controllers\AdminReservationController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\ReservationController;
+use App\Http\Controllers\admin\TableController;
+use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\BranchController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\MealController;
+use App\Http\Controllers\admin\ReviewController;
+
 /*
 /*
 |--------------------------------------------------------------------------
@@ -52,31 +58,19 @@ Route::middleware([
 
 
 Route::middleware(['admin'])->group(function () {
-    Route::get('/admin-contact', function () {
-        return view('admin.adminContacts');
-    })->name('admin.contact');
 
-    Route::resource('/admin-reservations', AdminReservationController::class);
-    Route::resource('/admin-tables', AdminTableController::class);
+    Route::resource('admin-reservations', ReservationController::class);
+    Route::resource('admin-tables', TableController::class);
 
-    Route::resource('/admin-orders', AdminOrdersController::class);
-    Route::resource('/admin-users', AdminUsersController::class);
-    Route::resource('/admin-contacts', AdminContactsController::class);
+    Route::resource('admin-orders', OrderController::class);
+    Route::resource('admin-users', UsersController::class);
+    Route::resource('admin-branches', BranchController::class);
+    Route::resource('admin-reviews',ReviewController::class);
 
-    Route::get('/admin-reviews', function () {
-        return view('admin.adminReviews');
-    })->name('admin.reviews');
+    Route::resource('admin-meals', MealController::class);
+    Route::resource('admin-categories', CategoryController::class);
 
-    Route::get('/admin-menu', [menuController::class, 'editMenu'])->name('admin.menus');
+    Route::resource('admin-orders',OrderController::class);
 
-    Route::resource('admin-meal', AdminMealController::class);
-    Route::resource('admin-category', AdminMenuController::class);
-
-    Route::get('/admin-orders', function () {
-        return view('admin.adminOrders');
-    })->name('admin.orders');
-
-    Route::get('/admin-users', function () {
-        return view('admin.adminUsers');
-    })->name('admin.users');
+    Route::resource('admin-users',UsersController::class);
 });

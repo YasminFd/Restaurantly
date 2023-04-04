@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use App\Models\menu_item;
@@ -13,15 +15,17 @@ use Illuminate\Http\Response;
 use App\Http\Requests\CategoryStoreRequest;
 
 
-class AdminMenuController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.edits.addCategory');
-
+        $categories = DB::table('categories')
+            ->select('*')
+            ->get();
+        return view('admin.categories.index',['data'=> $categories]);
     }
 
     /**
@@ -29,7 +33,7 @@ class AdminMenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -41,7 +45,7 @@ class AdminMenuController extends Controller
         $category=new category();
         $category->name=$req->name;
         $category->save();
-        return redirect('/admin-menu')->with('success','Menu created successfully');
+        return redirect(route('admin-categories.index'))->with('success','Menu created successfully');
     }
 
     /**
@@ -49,9 +53,6 @@ class AdminMenuController extends Controller
      */
     public function show(string $id)
     {
-        //
-        $menu = category::findOrFail($id);
-        return view('admin.edits.editCategory',['data'=>$menu]);
 
     }
 
@@ -60,7 +61,8 @@ class AdminMenuController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $menu = category::findOrFail($id);
+        return view('admin.categories.edit',['data'=>$menu]);
     }
 
     /**
@@ -72,7 +74,7 @@ class AdminMenuController extends Controller
         $menu=category::find($id);
         $menu->name=$req->name;
         $menu->save();
-        return redirect('/admin-menu')->with('success','Menu updated successfully');
+        return redirect(route('admin-categories.index'))->with('success','Menu updated successfully');
     }
 
     /**
@@ -86,6 +88,6 @@ class AdminMenuController extends Controller
             $meal->delete();
         }
         $menu->delete();
-        return redirect('/admin-menu')->with('success', 'Menu deleted successfully');
+        return redirect(route('admin-categories.index'))->with('danger', 'Menu deleted successfully');
     }
 }

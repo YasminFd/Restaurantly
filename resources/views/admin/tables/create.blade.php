@@ -7,17 +7,17 @@
 
 
     <div class="w-full">
-        <form action="/admin-tables" method="post">
+        <form action="{{ route('admin-tables.store') }}" method="post">
             @csrf
             <div class="row">
                 <div>
-                    <input type="text" name="name" placeholder="enter new table name" required>
+                    <input type="text" name="name" placeholder="Table Name" required>
                     <select name='location'>
                         @foreach (App\Enums\TableLocation::cases() as $location)
                             <option value={{ $location->value }}>{{ $location->name }}</option>
                         @endforeach
                     </select>
-                    <input type="number" name="guest_number" placeholder="enter guest_number" required>
+                    <input type="number" name="guest_number" placeholder="Guest Number" required>
                     <select name='branch_id'>
                         @foreach ($data as $branch)
                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>

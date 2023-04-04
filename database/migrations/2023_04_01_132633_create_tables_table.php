@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->integer('guest_number');
-            $table->string('status')->default('available');
+            $table->string('status')->default('Available');
             $table->string('location');
             $table->foreignId('branch_id')->constrained('branches');
         });

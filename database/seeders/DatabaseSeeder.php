@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Reservation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +25,12 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             MenuItemSeeder::class,
             TestimonySeeder::class,
-            BranchesTableSeeder::class
+            BranchesTableSeeder::class,
+            TablesSeeder::class,
+            ReservationsSeeder::class,
+            ReviewsSeeder::class
         ]);
+
+        
     }
 }

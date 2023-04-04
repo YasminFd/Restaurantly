@@ -8,7 +8,7 @@
         <br><br><br><br>
         <p>Admin Reservations Page</p>
         <div class="flex justify-end m-2 p-2 ">
-            <a href="/admin-reservations/create"
+            <a href="{{ route('admin-reservations.create') }}"
                 class=" px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg text-white ">Add Reservation</a>
         </div>
 
@@ -41,6 +41,9 @@
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Delete</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,8 +73,17 @@
                                 {{ $reservation->branch_id }}
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <a href="#"
+                                <a href="{{ route('admin-reservations.edit', $reservation->id) }}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <form class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                    action="{{ route('admin-reservations.destroy', $reservation->id) }}" method="POST"
+                                    onsubmit="return confirm('Are you Sure?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

@@ -31,13 +31,5 @@ class menuController extends Controller
         return view('menu', ['data' => $info]);
     }
     public function editMenu(){
-
-        $categories = DB::table('categories')
-            ->select('*')
-            ->get();
-        $menus = DB::table('menu_items')
-        ->select('*')
-        ->get();
-        return view('admin.adminMenus', ['data' => $categories,'data2'=>$menus]);
     }
 }

@@ -14,7 +14,7 @@ class homeController extends Controller
         $userType= Auth:: User()->user_type;
         if($userType==1)
         {
-            return view('admin.adminIndex');
+            return view('admin.index');
         }}
         $testimonials = DB::table('testimonials')->get();
         return view('index',['testimonials'=>$testimonials]);
