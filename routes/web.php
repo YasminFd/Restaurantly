@@ -40,6 +40,11 @@ Route::get('/reservations', function () {
 })->name('home.reservations');
 
 Route::get('/menu', [menuController::class, 'menuItemsForCategory'])->name('home.menu');
+Route::get('/view-meal/{i}', [menuController::class, 'viewMeal'])->name('home.menu.view');
+Route::post('/add-cart/{i}', [menuController::class, 'addCart'])->name('home.menu.add');
+Route::get('/view-cart/{i}', [menuController::class, 'viewCart'])->name('home.menu.cart');
+Route::get('/remove-cart/{i}', [menuController::class, 'removeCart'])->name('home.menu.remove');
+Route::get('/edit-cart/{i}', [menuController::class, 'editCart'])->name('home.menu.edit');
 
 // Nav bar of admin home page
 
@@ -66,14 +71,14 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('admin-orders', OrderController::class);
     Route::resource('admin-users', UsersController::class);
     Route::resource('admin-branches', BranchController::class);
-    Route::resource('admin-reviews',ReviewController::class);
+    Route::resource('admin-reviews', ReviewController::class);
 
     Route::resource('admin-meals', MealController::class);
     Route::resource('admin-categories', CategoryController::class);
 
-    Route::resource('admin-orders',OrderController::class);
+    Route::resource('admin-orders', OrderController::class);
 
-    Route::resource('admin-testimonials',TestimonialController::class);
+    Route::resource('admin-testimonials', TestimonialController::class);
 
-    Route::resource('admin-users',UsersController::class);
+    Route::resource('admin-users', UsersController::class);
 });

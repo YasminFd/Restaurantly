@@ -13,6 +13,11 @@ class category extends Model
     ];
     public function menu_item()
     {
-        return $this->hasMany(Menu_item::class);
+        return $this->hasMany(Meal::class);
+    }
+
+    public function detachAll()
+    {
+        $this->menu_item()->update(['category_id' => null]);
     }
 }

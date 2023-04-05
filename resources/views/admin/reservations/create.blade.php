@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="w-full">
-        <form action="{{route('admin-reservations.store')}}" method="post">
+        <form action="{{ route('admin-reservations.store') }}" method="post">
             @csrf
             <div class="row" style="width=100%;">
                 <div>
@@ -21,8 +21,8 @@
                     </select>
 
                     <select name='table_id'>
-                        @foreach ($tables as $location)
-                            <option value={{ $location->id }}>{{ $location->name }}</option>
+                        @foreach ($tables as $table)
+                            <option value={{ $table->id }}>{{ $table->name }} ({{ $table->guest_number }} Guests)</option>
                         @endforeach
                     </select>
                 </div>

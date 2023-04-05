@@ -24,10 +24,9 @@
                             <div class="menu-item filter-salads">
                                 <img src="{{ asset($item->image) }}" class="menu-img" alt="">
                                 <div class="menu-content">
-                                    <a href="#">{{ $item->name }}</a><span>${{ $item->price }}</span>
+                                    <a href="{{ route('home.menu.view',$item->id) }}">{{ $item->name }}</a><span>${{ $item->price }}</span>
                                 </div>
                                 <div class="menu-ingredients">
-                                    {{ $item->description }}
                                 </div>
                             </div>
                         </div>
@@ -53,7 +52,7 @@
                             <div class="row">
 
                                 <div class="col-lg-6 details ">
-                                    <h3>{{ $data3->name }}</h3>
+                                    <h3><a href="{{ route('home.menu.view',$data3->id) }}">{{ $data3->name }}</a></h3>
                                     <p class="fst-italic">{{ $data3->description }}</p>
                                     <p><b>Price: ${{ $data3->price }}</b></p>
                                 </div>
@@ -72,6 +71,6 @@
         </div>
     </section><!-- End Specials Section -->
 @endif
-<x-footer />
+<x-footer/>
 
 /*

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use App\Models\table;
 use App\Models\reservation;
+use Carbon\Carbon;
+
 class ReservationController extends Controller
 {
 
@@ -38,7 +40,7 @@ class ReservationController extends Controller
     public function create()
     {
         $data = $this->getBranches();
-        $tables = Table::all();
+        $tables = Table::where('status',TableStatus::Available)->get();
         return view('admin.reservations.create',['data'=>$data, 'tables'=>$tables]);
     }
 
@@ -47,6 +49,18 @@ class ReservationController extends Controller
      */
     public function store(ReservationStoreRequest $req)
     {
+
+        $table  = Table::findOrFail($req->table_id);
+        if($req->guest_number > $table->guest_number)
+            return back()->with('warning','Please choose the table based on the guests number');
+        
+        $req_date = Carbon::parse($req->res_date)->format('Y-m-d');
+        foreach($table->reservations as $reservation){
+            $res_date = Carbon::parse($reservation->res_date)->format('Y-m-d');
+            if($res_date == $req_date) {
+                return back()->with('warning', 'This table is reserved for this date');
+            }
+        }
         $reservation = new reservation();
         $reservation->first_name = $req->first_name;
         $reservation->last_name = $req->last_name;

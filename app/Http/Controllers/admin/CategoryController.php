@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
-use App\Models\menu_item;
+use App\Models\Meal;
 use App\Models\category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
@@ -82,12 +82,16 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $menu = category::findOrFail($id);
-        $meals = menu_item::where('category_id', $id)->get();
+        $category = category::findOrFail($id);
+        /*
+        $meals = Meal::where('category_id', $id)->get();
         foreach($meals as $meal) {
             $meal->delete();
         }
-        $menu->delete();
+        */
+
+        $category->detachAll();
+        $category->delete();
         return redirect(route('admin-categories.index'))->with('danger', 'Menu deleted successfully');
     }
 }

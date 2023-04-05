@@ -86,7 +86,7 @@ class TableController extends Controller
     {
         $table = table::findOrFail($id);
         $branches=$this->getBranches();
-        return view('admin.tables.edit',['data1'=>$table,'data'=>$branches]);
+        return view('admin.tables.edit',['table'=>$table,'branches'=>$branches]);
     }
 
     /**
