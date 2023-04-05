@@ -1,7 +1,7 @@
 <x-header>
     @section('title', 'Menu')
 </x-header>
-<p>
+<div>
     <br><br><br>
     <div class="col-lg-6 details ">
         <h3>{{ $data->name }}</h3>
@@ -11,12 +11,13 @@
     <div class="col-lg-3 text-center order-lg-2">
         <img src="{{ asset($data->image) }}" alt="" class="img-fluid">
     </div>
-    <form action="/add-cart/{{ $data->id }}" method="post">
+    <form action="{{route('cart.update', $data->id) }}" method="post">
         @csrf
-        <input type="number" name="quantity" min="1" value={{ $quantity }}>
+        @method('PUT')
+        <input type="number" name="quantity" min="1" value={{ $quantity }} style="background-color:black; padding: 5px;">
         <input type="submit" value="add to cart">
     </form>
     <br><br>
 
-</p>
+</div>
 <x-footer/>

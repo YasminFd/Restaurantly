@@ -61,7 +61,7 @@
                     <li><a class="nav-link scrollto {{ Request::is('reservations') ? 'active':'' }}" href="{{ route('home.reservations') }}">Book a table </a></li>
                     <li>
                         @auth
-                        <a class="nav-link scrollto {{ Request::is('menu.cart') ? 'active':'' }}" href="{{ route('home.menu.cart',auth()->id()) }}">Cart &nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                        <a class="nav-link scrollto {{ Request::is('cart.show') ? 'active':'' }}" href="{{ route('cart.show',auth()->id()) }}">Cart &nbsp;&nbsp;&nbsp;&nbsp;</a></li>
                         @endauth
                         <ul>
                         @if (Route::has('login'))
