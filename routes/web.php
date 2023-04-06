@@ -6,7 +6,7 @@ use App\Http\Controllers\menuController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\contactsController;
 use App\Http\Controllers\mailController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ReservationController;
 use App\Http\Controllers\admin\TableController;
 use App\Http\Controllers\admin\UsersController;
@@ -15,7 +15,10 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\MealController;
 use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\TestimonialController;
+use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\orderController as userOrderController;
+use App\Http\Controllers\ReservationController as userReservationController;
 
 /*
 /*
@@ -36,15 +39,17 @@ Route::get('/contact', [contactsController::class, 'display'])->name('home.conta
 Route::post('/contact', [mailController::class, 'send'])->name('contact');
 
 
-Route::get('/reservations', function () {
-    return view('reservations');
-})->name('home.reservations');
+Route::get('/reservations', [userReservationController::class, 'viewReservation'])->name('home.reservations');
+
+Route::get('/bookTable', [userReservationController::class, 'addTableReservation'])->name('bookTable');
+Route::get('/bookEvent', [userReservationController::class, 'addEventReservation'])->name('bookEvent');
+
 Route::get('/menu', [menuController::class, 'menuItemsForCategory'])->name('home.menu');
 Route::get('/view-meal/{i}', [menuController::class, 'viewMeal'])->name('home.menu.view');
-Route::get('/order/{i}/{total}', [orderController::class, 'addOrder'])->name('home.order');
+Route::get('/order/{i}/{total}', [userOrderController::class, 'addOrder'])->name('home.order');
 
-Route::resource('/cart',CartController::class);
-Route::get('/clear/{i}', [CartController::class,'clear'])->name('clear');
+Route::resource('/cart', CartController::class);
+Route::get('/clear/{i}', [CartController::class, 'clear'])->name('clear');
 /*
 
 
