@@ -6,7 +6,7 @@ use App\Http\Controllers\menuController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\contactsController;
 use App\Http\Controllers\mailController;
-use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\admin\ReservationController;
 use App\Http\Controllers\admin\TableController;
 use App\Http\Controllers\admin\UsersController;
@@ -19,7 +19,7 @@ use App\Http\Controllers\CartController;
 
 /*
 /*
-|--------------------------------------------------------------------------
+|--------------------------------------------------------------------------{{  }}
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -41,7 +41,8 @@ Route::get('/reservations', function () {
 })->name('home.reservations');
 Route::get('/menu', [menuController::class, 'menuItemsForCategory'])->name('home.menu');
 Route::get('/view-meal/{i}', [menuController::class, 'viewMeal'])->name('home.menu.view');
-Route::get('/order/{i}', [orderController::class, 'addOrder'])->name('home.order');
+Route::get('/order/{i}/{total}', [orderController::class, 'addOrder'])->name('home.order');
+
 Route::resource('/cart',CartController::class);
 Route::get('/clear/{i}', [CartController::class,'clear'])->name('clear');
 /*

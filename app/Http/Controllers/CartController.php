@@ -80,7 +80,7 @@ class CartController extends Controller
         $data=Meal::find($item->meal_id);
         $user=$data->user_id;
         $quantity=$item->quantity;
-        return view('cart.update',['data'=>$data,'quantity'=>$quantity]);
+        return view('menu.show',['data'=>$data,'quantity'=>$quantity]);
     }
 
     /**

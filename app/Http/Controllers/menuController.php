@@ -33,14 +33,10 @@ class menuController extends Controller
         return view('menu.index', ['data' => $info]);
     }
     public function viewMeal(string $id){
-        if(($user = auth()->id()))
-        {
-            $data=Meal::findOrFail($id);
-            $quantity=1;
-            return view('cart.update',['data'=>$data,'quantity'=>$quantity]);
-        }
-        else{
-            return redirect('/login');
-        }
+
+        $data=Meal::findOrFail($id);
+        $quantity=1;
+        return view('menu.show',['data'=>$data,'quantity'=>$quantity]);
+        
     }
 }

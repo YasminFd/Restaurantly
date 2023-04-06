@@ -30,77 +30,65 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Restaurantly - v3.10.0
-  * Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
-<body>
+<header id="header" class="fixed-top d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-    <!-- ======= Top Bar ======= -->
+        <h1 class="logo me-auto me-lg-0"><a href="/">Restaurantly</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto {{ Request::is('/') ? 'active' : '' }}"
+                        href="{{ route('home.index') }}">Home</a></li>
 
 
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-cente">
-        <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
-
-            <h1 class="logo me-auto me-lg-0"><a href="/">Restaurantly</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-            <nav id="navbar" class="navbar order-last order-lg-0">
+                <li><a class="nav-link scrollto {{ Request::is('menu') ? 'active' : '' }}"
+                        href="{{ route('home.menu') }}">Menu</a></li>
+                <li><a class="nav-link scrollto {{ Request::is('contact') ? 'active' : '' }}"
+                        href="{{ route('home.contact') }}">Contact</a></li>
+                <li><a class="nav-link scrollto {{ Request::is('reservations') ? 'active' : '' }}"
+                        href="{{ route('home.reservations') }}">Book a table &nbsp;</a></li>
+                <li>
+                    @auth
+                        <a class="nav-link scrollto {{ Request::is('cart.show') ? 'active' : '' }}"
+                            href="{{ route('cart.show', auth()->id()) }}">Cart &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </li>
+                @endauth
                 <ul>
-                    <li><a class="nav-link scrollto {{ Request::is('/') ? 'active':'' }}" href="{{ route('home.index') }}">Home</a></li>
-                    
-                    
-                    <li><a class="nav-link scrollto {{ Request::is('menu') ? 'active':'' }}" href="{{ route('home.menu') }}">Menu</a></li>
-                    <li><a class="nav-link scrollto {{ Request::is('contact') ? 'active':'' }}" href="{{ route('home.contact') }}">Contact</a></li>
-                    <li><a class="nav-link scrollto {{ Request::is('reservations') ? 'active':'' }}" href="{{ route('home.reservations') }}">Book a table </a></li>
-                    <li>
-                        @auth
-                        <a class="nav-link scrollto {{ Request::is('cart.show') ? 'active':'' }}" href="{{ route('cart.show',auth()->id()) }}">Cart &nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-                        @endauth
-                        <ul>
-                        @if (Route::has('login'))
-                            <div class="d-flex  p-0 text-right  mt-1">
-                                @auth
-                                    <div class="d-flex p-0 mb-n5">
-                                        <x-app-layout>
+                    @if (Route::has('login'))
+                        <div class="d-flex  p-0 text-right  mt-1">
+                            @auth
+                                <div class="d-flex p-0 mb-n5">
+                                    <x-app-layout>
 
-                                        </x-app-layout>
-                                    </div>
-                                @else
-                                    <li class="dropdown book-a-table-btn"><a
-                                            href="#"><span>Account&nbsp;&nbsp;&nbsp;</span> <i
-                                                class="bi bi-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="{{ route('login') }}"
-                                                    class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                                                    in</a></li>
-                                            @if (Route::has('register'))
-                                                <li><a href="{{ route('register') }}"
-                                                        class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                                                </li>
-                                            @endif
-                                        </ul>
-                                </li>@endauth
-                            </div>
-                        @endif
-                        </a>
-                    </ul>
-
-
+                                    </x-app-layout>
+                                </div>
+                            @else
+                                <li class="dropdown book-a-table-btn"><a
+                                        href="#"><span>Account&nbsp;&nbsp;&nbsp;</span> <i
+                                            class="bi bi-chevron-down"></i></a>
+                                    <ul>
+                                        <li><a href="{{ route('login') }}"
+                                                class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                                                in</a></li>
+                                        @if (Route::has('register'))
+                                            <li><a href="{{ route('register') }}"
+                                                    class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                            </li>@endauth
+                        </div>
+                    @endif
+                    </a>
                 </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
 
 
-        </div>
-    </header>
-    <!-- End Header -->
-</body>
-
-</html>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
+</header>
