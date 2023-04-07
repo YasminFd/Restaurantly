@@ -32,7 +32,7 @@
                                 {{ $order->order_id }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $order->Meal->name }}
+                                {{ $order->meal->name }}
                             </th>
                             <td class="px-6 py-4">
                                 {{ $order->quantity }}
