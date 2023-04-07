@@ -1,12 +1,19 @@
 <x-header>
     @section('title', 'Menu')
 </x-header>
-@if(session('success'))
-        <script>
-            alert('{{ session('success') }}');
-        </script>
-    @endif
+@if (session('success'))
+    <script>
+        alert('{{ session('success') }}');
+    </script>
+@endif
 <style>
+    * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: #e5e7eb;
+    }
+
     .content {
         display: flex;
         flex-direction: column;
@@ -67,7 +74,7 @@
         @csrf
         @method('PUT')
         <div><input type="number" name="quantity" min="1" placeholder="Quantity"
-                style="color:black;border-radius:5%" value="{{ $quantity }}"></div>
+                style="color:black;border-radius:5%; height:40px;" value="{{ $quantity }}"></div>
         <div><input type="submit" value="add to cart" class="my-3"
                 style="border:1px solid #fcb3b3; border-radius:5%; padding: 3%; background-color:#fcb3b3; color:#000;">
         </div>
@@ -76,26 +83,26 @@
 </div>
 <div>
 </div>
-            
-<form action="{{ route('review' ) }}" method="POST"> 
+
+<form action="{{ route('review') }}" method="POST">
     @csrf
-    <input type="text" name="name"  placeholder="Your Name" required>
-    <input type="hidden" name="meal_id"   value="{{ $data->id }}" >
-    <textarea  name="comment" rows="5" placeholder="comment"  required></textarea>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="hidden" name="meal_id" value="{{ $data->id }}">
+    <textarea name="comment" rows="5" placeholder="comment" required></textarea>
     <input type="number" name="rating" min="1" max="5" required>
-   <button type="submit">add review</button>
+    <button type="submit">add review</button>
 </form>
 
 </div>
 <div>
     <ul>
-  @foreach($info as $review)
-  <li>
-  <p>{{ $review->name }}</p>
-  <h2>-----{{ $review->rating}}/5-----</h2>
-  <p>{{ $review->comment }}</p>
-  </li>
-  @endforeach  
+        @foreach ($info as $review)
+            <li>
+                <p>{{ $review->name }}</p>
+                <h2>-----{{ $review->rating }}/5-----</h2>
+                <p>{{ $review->comment }}</p>
+            </li>
+        @endforeach
     </ul>
 </div>
 
