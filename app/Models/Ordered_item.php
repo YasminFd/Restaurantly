@@ -15,7 +15,7 @@ class Ordered_item extends Model
     ];
     public function meal()
     {
-        return $this->belongsTo(Meal::class);
+        return $this->belongsTo(Meal::class,'item_id');
     }
     public function order()
     {

@@ -15,6 +15,9 @@
                         Comment
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Add Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Rating
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -25,7 +28,6 @@
                 </tr>
             </thead>
             <tbody>
-                {{ $c=0 }}
                 @foreach ($data as $review)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -35,6 +37,9 @@
                             <td class="px-6 py-4">
                                 {{ $review->comment }}
                             </td>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                {{ $review->created_at }}
+                            </th>
                             <td class="px-6 py-4">
                                 {{ $review->rating}}
                             </td>

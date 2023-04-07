@@ -37,7 +37,7 @@
                                 {{ $order['name'] }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $order['id'] }}
+                                {{ $order['created_at'] }}
                             </th>
                             <td class="px-6 py-4">
                                 {{ $order->branch->name }}

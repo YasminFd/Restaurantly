@@ -16,13 +16,9 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        $reviews  = Review::orderBy('created_at', 'desc')->get();
         $info = array();
-        foreach ($reviews as $review) {
-            $item = meal::where('id',$review->meal_id)->get();
-            $data[]=$item;
-        }
-        return view('admin.reviews.index', ['data' => $reviews,'name'=>$data]);
+        return view('admin.reviews.index', ['data' => $reviews]);
     }
 
     /**

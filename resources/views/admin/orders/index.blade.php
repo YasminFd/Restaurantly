@@ -16,6 +16,9 @@
                             Order
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Order_date
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             branch
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -47,6 +50,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $order['id'] }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $order['created_at'] }}
                             </th>
                             <td class="px-6 py-4">
                                 {{ $order->branch->name }}

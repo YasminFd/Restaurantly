@@ -19,9 +19,10 @@ class Meal extends Model
     {
         return $this->belongsTo(category::class);
     }
+
     public function ordered_item()
     {
-        return $this->hasMany(ordered_item::class);
+        return $this->hasMany(Ordered_item::class);
     }
 }
 
