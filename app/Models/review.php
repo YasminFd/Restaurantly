@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class review extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
-        'user_id',
-        'branch_id',
-        'total',
-        'address',
-        'phone_number'
+        'comment',
+        'rating',
+        'meal_id'
     ];
-    public function branch()
+    public function meal()
     {
-        return $this->belongsTo(branch::class);
+        return $this->belongsTo(meal::class);
     }
 }

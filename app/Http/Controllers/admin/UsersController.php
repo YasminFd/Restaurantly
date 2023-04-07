@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\User;
+use App\Models\order;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -54,7 +55,8 @@ class UsersController extends Controller
     public function show(string $id)
     {
         //
-
+        $orders=order::where('user_id',$id)->get();
+        return view('admin.users.show',['data'=>$orders]);
     }
 
     /**

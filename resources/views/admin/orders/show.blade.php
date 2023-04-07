@@ -10,23 +10,18 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Order
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            branch
+                            Meal
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            total
+                            Quantity
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            status
+                            Price
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            address
-                        </th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -34,27 +29,24 @@
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
-                                {{ $order['name'] }}
+                                {{ $order->order_id }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $order['id'] }}
+                                {{ $order->Meal->name }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $order->branch->name }}
+                                {{ $order->quantity }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $order['total'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $order['status'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $order['address'] }}
+                                {{ $order->meal->price }}
                             </td>
                         </tr>
 
                 </tbody>
                 @endforeach
+                <tfoot class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th></th><th></th><th></th><th></th><th>{{ $total }}</th>
+                </tfoot>
             </table>
         </div>
     </body>

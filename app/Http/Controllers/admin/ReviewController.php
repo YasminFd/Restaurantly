@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
+use App\Models\review;
+use App\Models\meal;
+use Illuminate\Support\Facades\DB;
 class ReviewController extends Controller
 {
     /**
@@ -14,7 +16,13 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        return view('admin.reviews.index');
+        $reviews = Review::all();
+        $info = array();
+        foreach ($reviews as $review) {
+            $item = meal::where('id',$review->meal_id)->get();
+            $data[]=$item;
+        }
+        return view('admin.reviews.index', ['data' => $reviews,'name'=>$data]);
     }
 
     /**
@@ -63,5 +71,8 @@ class ReviewController extends Controller
     public function destroy(string $id)
     {
         //
+        $review = review::findOrFail($id);
+        $review->delete();
+        return redirect(route('admin-reviews.index'))->with('success', 'Review deleted successfully');
     }
 }

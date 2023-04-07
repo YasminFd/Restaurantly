@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\Order;
+use App\Models\Ordered_item;
 
-class OrderController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,8 @@ class OrderController extends Controller
     public function index()
     {
         //
-        return view('admin.orders.index');
+        $orders=order::all();
+        return view('admin.orders.index',['data'=>$orders]);
     }
 
     /**
@@ -40,6 +43,9 @@ class OrderController extends Controller
     public function show(string $id)
     {
         //
+        $total=order::find($id)->total;
+        $data=ordered_item::where('order_id',$id)->get();
+        return view('admin.orders.show',['data'=>$data,'total'=>$total]);
     }
 
     /**
@@ -48,14 +54,20 @@ class OrderController extends Controller
     public function edit(string $id)
     {
         //
+        $data=order::find($id);
+        return view('admin.orders.edit',['data'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $req, string $id)
     {
         //
+        $data=order::find($id);
+        $data->status=$req->status;
+        $data->save();
+        return $this->index();
     }
 
     /**
@@ -64,5 +76,13 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
+        $data=order::find($id);
+        $info=Ordered_item::where('order_id',$id)->get();
+        foreach($info as $x)
+        {
+            $x->delete();
+        }
+        $data->delete();
+        return $this->index()->with('danger','order deleted succesfully!');
     }
 }
