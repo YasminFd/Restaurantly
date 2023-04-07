@@ -38,6 +38,13 @@ class ReviewsSeeder extends Seeder
                 'rating' => 5,
                 'comment' => 'one of my favorites!',
                 'meal_id' => 5,
-            ],]);
+            ],
+            [
+                'name' => 'Bill Gates',
+                'rating' => 4,
+                'comment' => 'Spectacular!',
+                'meal_id' => 5,
+            ],
+        ]);
     }
 }
