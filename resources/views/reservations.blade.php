@@ -9,8 +9,7 @@
 </p>
 <div>
     @if (session()->has('danger'))
-        <div class="mb-4 rounded-lg bg-red-100 p-4 text-sm text-red-700 dark:bg-red-200 dark:text-red-800"
-            role="alert">
+        <div class="mb-4 rounded-lg bg-red-100 p-4 text-sm text-red-700 dark:bg-red-200 dark:text-red-800" role="alert">
             <span class="font-medium">Danger alert!</span> {{ session()->get('danger') }}
         </div>
     @endif
@@ -139,7 +138,8 @@
                 <div class="col-lg-4 col-md-6 form-group mt-3">
                     <input type="datetime-local" name="res_date" class="form-control" id="date"
                         placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars"
-                        min="{{ $minDate->addWeek()->format('Y-m-d\TH:i:s') }}" max="{{ $maxDate->addWeek()->format('Y-m-d\TH:i:s') }}">
+                        min="{{ $minDate->addWeek()->format('Y-m-d\TH:i:s') }}"
+                        max="{{ $maxDate->addWeek()->format('Y-m-d\TH:i:s') }}">
                     <div class="validate"></div>
                 </div>
 
@@ -151,6 +151,10 @@
                     </select>
                     <div class="validate"></div>
                 </div>
+            </div>
+            <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                <div class="validate"></div>
             </div>
 
             <div class="text-center"><button type="submit">Book an Event</button></div>

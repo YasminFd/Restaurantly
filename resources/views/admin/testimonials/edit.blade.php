@@ -20,7 +20,7 @@
 
                 </div>
             </div>
-            <div class="text-center"><button type="submit" name="send">Edit Testimonial</button></div>
+            <div class="text-center"><button type="submit" name="send" class="add">Edit Testimonial</button></div>
         </form>
     </div>
 @endsection

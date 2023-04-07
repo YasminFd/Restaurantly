@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\menu_item;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

@@ -22,12 +22,14 @@
 
                     <select name='table_id'>
                         @foreach ($tables as $table)
-                            <option value={{ $table->id }}>{{ $table->name }} ({{ $table->guest_number }} Guests)</option>
+                            <option value={{ $table->id }}>{{ $table->name }} ({{ $table->guest_number }} Guests)
+                            </option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <div class="text-center"><button type="submit" name="send" class="add">Add Table Reservation</button></div>
+            <div class="text-center"><button type="submit" name="send" class="add">Add Table Reservation</button>
+            </div>
         </form>
     </div>
 
@@ -48,9 +50,14 @@
                         @endforeach
                     </select>
 
+
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message" rows="10" cols="10"></textarea>
+
                 </div>
             </div>
-            <div class="text-center"><button type="submit" name="send" class="add">Add Event Reservation</button></div>
+
+            <div class="text-center"><button type="submit" name="send" class="add">Add Event Reservation</button>
+            </div>
         </form>
     </div>
 @endsection

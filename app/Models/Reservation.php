@@ -16,7 +16,8 @@ class Reservation extends Model
         'email',
         'table_id',
         'res_date',
-        'guest_number'
+        'guest_number',
+        'message'
     ];
 
     protected $dates = [

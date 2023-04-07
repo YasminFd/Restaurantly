@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->dateTime('res_date');
             $table->string('type');
+            $table->string('message')->nullable();
             $table->foreignId('table_id')->nullable()->constrained('tables');
             $table->integer('guest_number')->nullable();
             $table->foreignId('branch_id')->constrained('branches');

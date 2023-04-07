@@ -11,13 +11,13 @@ class category extends Model
     protected $fillable = [
         'name',
     ];
-    public function menu_item()
+    public function meals()
     {
         return $this->hasMany(Meal::class);
     }
 
     public function detachAll()
     {
-        $this->menu_item()->update(['category_id' => null]);
+        $this->meals()->update(['category_id' => null]);
     }
 }

@@ -64,6 +64,11 @@
                                 @if ($branch->id == $reservation->branch_id) selected = "selected" @endif>{{ $branch->name }}</option>
                         @endforeach
                     </select>
+
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Message">{{ $reservation->message }}</textarea>
+                        <div class="validate"></div>
+                    </div>
                 </div>
             </div>
             <div class="text-center"><button type="submit" name="send" class="add">Edit Reservation</button></div>

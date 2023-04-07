@@ -32,23 +32,21 @@ class ReservationController extends Controller
         $reservation->email = $req->email;
         $reservation->phone_number = $req->phone_number;
         $reservation->res_date = $req->res_date;
+        $reservation->branch_id = $req->branch_id;
+        $reservation->table_id = $req->table_id;
+        $reservation->guest_number = $req->guest_number;
+        $reservation->message = $req->message;
 
         if (!isset($req->table_id)) {
             $reservation->type = ReservationType::Event;
-            $reservation->table_id = null;
-            $reservation->guest_number = null;
         } else {
+
+            $reservation->type = ReservationType::Table;
 
             $table  = Table::findOrFail($req->table_id);
             if ($req->guest_number > $table->guest_number)
                 return back()->with('warning', 'Please choose the table based on the guests number');
-
-            $reservation->type = ReservationType::Table;
-            $reservation->table_id = $req->table_id;
-            $reservation->guest_number = $req->guest_number;
         }
-
-        $reservation->branch_id = $req->branch_id;
 
         $events = Reservation::where('type', ReservationType::Event)->get();
         $res_date = Carbon::parse($reservation->res_date)->format('Y-m-d');

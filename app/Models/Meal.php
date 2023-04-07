@@ -24,5 +24,10 @@ class Meal extends Model
     {
         return $this->hasMany(Ordered_item::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(review::class);
+    }
 }
 

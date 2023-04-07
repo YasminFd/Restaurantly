@@ -29,6 +29,7 @@ class ReservationsSeeder extends Seeder
                 'table_id' => '1',
                 'guest_number' =>  '9',
                 'branch_id' => '1',
+                'message' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -42,6 +43,7 @@ class ReservationsSeeder extends Seeder
                 'table_id' => '2',
                 'guest_number' =>  '8',
                 'branch_id' => '1',
+                'message' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -55,6 +57,7 @@ class ReservationsSeeder extends Seeder
                 'table_id' => '3',
                 'guest_number' =>  '5',
                 'branch_id' => '2',
+                'message' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -68,6 +71,7 @@ class ReservationsSeeder extends Seeder
                 'table_id' => null,
                 'guest_number' =>  '0',
                 'branch_id' => '2',
+                'message' => 'Wedding Event for Maria and John. There is about 100 people with music. We would like some simple elegant decorations.',
                 'created_at' => now(),
                 'updated_at' => now()
             ]

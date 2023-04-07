@@ -8,7 +8,7 @@
         font-weight: 500;
         padding: 0;
         line-height: 1px;
-        margin:  40px 0 20px 0;
+        margin: 40px 0 20px 0;
         letter-spacing: 2px;
         text-transform: uppercase;
         color: #aaaaaa;
@@ -144,6 +144,9 @@
                             Branch
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Message
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -170,6 +173,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $reservation->branch->name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $reservation->message }}
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('admin-reservations.edit', $reservation->id) }}"
