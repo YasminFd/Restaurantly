@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Admin Users')
+@section('title', 'Admin Orders')
 
 @section('content')
 
@@ -29,6 +29,9 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             address
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            phone
                         </th>
                         <th scope="col" class="px-6 py-3">
                             
@@ -65,6 +68,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $order['address'] }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $order['phone_number'] }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href={{ route('admin-orders.show',$order->id) }}>

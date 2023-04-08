@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Meal;
 use App\Models\Cart;
+use App\Models\Review;
 use App\Models\Branch;
 use App\Models\category;
 use Illuminate\Support\Facades\DB;
@@ -61,7 +62,7 @@ class CartController extends Controller
         {
             $data=cart::where('user_id',$id)
                         ->join('meals','carts.meal_id','=','meals.id')
-                        ->select('meals.name','meals.id','meals.price','carts.user_id','carts.quantity','carts.id')
+                        ->select('meals.name','meals.id','meals.price','carts.user_id','carts.quantity','carts.id','meals.image')
                         ->get();
             return view('cart.show',['data'=>$data,'branch'=>$branch]);
         }
@@ -80,7 +81,9 @@ class CartController extends Controller
         $data=Meal::find($item->meal_id);
         $user=$data->user_id;
         $quantity=$item->quantity;
-        return view('menu.show',['data'=>$data,'quantity'=>$quantity]);
+        $info=Review::where('meal_id',$id)->get();
+        $average = $data->reviews->avg('rating');
+        return view('menu.show',['data'=>$data,'quantity'=>$quantity,'average'=>$average,'info'=>$info,]);
     }
 
     /**

@@ -76,8 +76,8 @@
                     <div class="validate"></div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 form-group mt-3">
-                    <select name="branch_id">
+                <div class="col-lg-4 col-md-6 form-group mt-3 ">
+                    <select name="branch_id" class="form-control">
                         @foreach ($branches as $branch)
                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                         @endforeach
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 form-group mt-3">
-                    <select name="table_id">
+                    <select name="table_id" class="form-control" >
                         @foreach ($tables as $table)
                             <option value="{{ $table->id }}">{{ $table->name }} ({{ $table->guest_number }} Guests)
                             </option>
@@ -144,7 +144,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 form-group mt-3">
-                    <select name="branch_id">
+                    <select name="branch_id" class="form-control" >
                         @foreach ($branches as $branch)
                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                         @endforeach

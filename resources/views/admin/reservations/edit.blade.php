@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Add Table')
+@section('title', 'Edit Reservation')
 
 @section('content')
     <div class="w-full">

@@ -58,29 +58,29 @@
     </div>
     <section>
         <div class="section-title">
-            <h2>Leave a Review</h2>
+            <p>Leave a Review</p>
         </div>
         <form action="{{ route('review') }}" method="POST"
             style="display:flex; flex-direction:column; justify-content:start; gap:10px; align-items:start; text-align:center; vertical-align:middle;">
             @csrf
             <div>
-                <label for="name">Name: </label>
+                <label for="name" style="padding-right:3.1em ">Name: </label>
                 <input type="text" name="name" id="name" placeholder="Name" required style="width:30%;">
             </div>
-            <div>
-                <input type="hidden" name="meal_id" value="{{ $data->id }}">
-            </div>
             <div style="display:inherit; align-items:center;">
-                <label for="comment">Comment: </label>
+                <label for="comment" style="padding-right:1.6em ">Comment:</label>
                 <textarea name="comment" rows="1" cols="5" placeholder="Comment" id="comment" required
                     style="width: 30%;"></textarea>
             </div>
             <div>
-                <label for="rating">Rating: </label>
+                <label for="rating" style="padding-right:3em">Rating: </label>
                 <input type="number" name="rating" id="rating" min="1" max="5" placeholder="Rating"
                     required style="width:30%;">
             </div>
-            <button type="submit" class="add">Add Review</button>
+            <div>
+                <input type="hidden" name="meal_id" value="{{ $data->id }}">
+            </div>
+            <button type="submit" class="add">&nbsp Add Review &nbsp</button>
         </form>
     </section>
 
@@ -90,14 +90,16 @@
             <h2>Reviews</h2>
             <em>{{ $average }} / 5</em>
         </div>
-        <div style="display:flex; flex-direction:column; justify-content:start; align-items:center; gap:15px">
-            @foreach ($info as $review)
+        <div class="menu menu-content">
+        <!--<div style="display:flex; flex-direction:column; justify-content:start; align-items:center; gap:15px">
+        --> @foreach ($info as $review)
                 <div>
                     <h4 style="color:#cda45e;">{{ $review->name }}</h4>
                     <p><strong> Review: {{ $review->rating }} / 5</strong></p>
                     <p style="color: #eeecec;"><em>{{ $review->comment }}</em></p>
                 </div>
             @endforeach
+        <!--</div>-->
         </div>
     </section>
 </main>

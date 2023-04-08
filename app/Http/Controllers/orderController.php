@@ -53,6 +53,6 @@ class orderController extends Controller
         $user = user::find($i);
         $info[$req->name] = $order_details;
         Mail::to($user->email)->send(new receipt($info, $total));
-        return redirect()->route('home.index');
+        return redirect()->route('home.index')->with('success','Order Sent Successfully!');
     }
 }

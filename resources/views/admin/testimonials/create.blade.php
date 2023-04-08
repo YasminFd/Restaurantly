@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Admin Testimonials')
+@section('title', 'Add Testimonials')
 
 @section('content')
     <br><br><br>

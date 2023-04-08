@@ -27,8 +27,6 @@
 @section('content')
 
     <body>
-        <br><br><br><br>
-        <p>Admin Reservations Page</p>
         <div class="flex justify-end m-2 p-2 ">
             <a href="{{ route('admin-reservations.create') }}"
                 class=" px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg text-white ">Add Reservation</a>

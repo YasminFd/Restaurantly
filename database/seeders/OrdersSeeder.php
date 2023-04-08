@@ -15,12 +15,14 @@ class OrdersSeeder extends Seeder
     {
         //
         DB::table('orders')->insert([[
-            'id'=>1,
             'user_id' => 2,
-            'item_id'=>1,
-            'quantity' =>2,
-            'order_date'=>now(),
+            'branch_id'=>1,
+            'phone_number' =>'76849449',
+            'created_at'=>now(),
             'status'=>'ongoing',
+            'address'=>'some where',
+            'name'=>'Tony Stark',
+            'total'=>'20'
         ],
     ]);
 

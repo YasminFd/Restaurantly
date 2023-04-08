@@ -28,7 +28,9 @@ class DatabaseSeeder extends Seeder
             BranchesTableSeeder::class,
             TablesSeeder::class,
             ReservationsSeeder::class,
-            ReviewsSeeder::class
+            ReviewsSeeder::class,
+            ordersSeeder::class,
+            order_itemsSeeder::class
         ]);
 
         
