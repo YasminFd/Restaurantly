@@ -88,7 +88,9 @@ data-aos-delay="100">
             @endforeach
         </select>
     </div>
-<div class="text-center mb-3 "><button type="submit" class="button cart_button_clear">Order Now</button></div>
+    @if ($total !== 0)
+<div class="text-center mb-3 "><button type="submit" class="button cart_button_clear send">Order Now</button></div>
+@endif
 </div>
 </form>
 </div>

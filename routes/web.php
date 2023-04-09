@@ -39,7 +39,7 @@ Route::get('/contact', [contactsController::class, 'display'])->name('home.conta
 
 
 // Nav bar of home page
-Route::post('/contact', [mailController::class, 'send'])->name('contact');
+Route::post('/send', [contactsController::class, 'sendInfo'])->name('contact');
 
 
 Route::get('/reservations', [userReservationController::class, 'viewReservation'])->name('home.reservations');

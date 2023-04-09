@@ -53,7 +53,7 @@
         </div>
         @endforeach
         <div >
-            <form action="/send" method="get" role="form" class="php-email-form">
+            <form action="{{ route('contact') }}" method="post" role="form" class="php-email-form">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 form-group">
@@ -65,10 +65,9 @@
                             placeholder="Your Email" required>
                     </div>
                 </div>
-                <div class="form-group mt-3">
                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
                         required>
-                </div>
+                
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
                 </div>

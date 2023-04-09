@@ -21,6 +21,6 @@ class contactsController extends Controller
     function sendInfo(Request $req){
         Mail::to($req->email)->send(new TestMail());
         Mail::to("restaurantly@gmail.com")->send(new FromCustomer($req));
-        return redirect()->route('contact')->with('success', 'Email sent successfully!');
+        return redirect()->route('home.contact')->with('success', 'Email sent successfully!');
     }
 }
