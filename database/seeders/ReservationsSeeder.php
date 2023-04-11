@@ -66,7 +66,7 @@ class ReservationsSeeder extends Seeder
                 'last_name' => 'Miller',
                 'email' => 'john@gmail.com',
                 'phone_number' => '102030',
-                'res_date' => $time,
+                'res_date' => now()->addWeek(),
                 'type' => ReservationType::Event,
                 'table_id' => null,
                 'guest_number' =>  '0',

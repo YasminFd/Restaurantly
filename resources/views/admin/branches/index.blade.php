@@ -2,6 +2,29 @@
 
 @section('title', 'Admin Contacts')
 
+<style>
+    .section-title h2 {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0;
+        line-height: 1px;
+        margin: 40px 0 20px 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaaaaa;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .section-title h2::after {
+        content: "";
+        width: 120px;
+        height: 1px;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 4px 10px;
+    }
+</style>
+
 @section('content')
 
     <body>
@@ -9,6 +32,9 @@
         <div class="flex justify-end m-2 p-2 ">
             <a href="{{ route('admin-branches.create') }}"
                 class=" px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg text-white ">Add Branch</a>
+        </div>
+        <div class="section-title">
+            <h2>Branches</h2>
         </div>
         <div class="relative  shadow-md sm:rounded-lg">
             <table class=" text-sm text-left text-gray-500 dark:text-gray-400" style=" table-layout: fixed;">

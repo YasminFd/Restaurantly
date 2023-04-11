@@ -15,31 +15,31 @@ class TestimonySeeder extends Seeder
     {
         DB::table('testimonials')->insert([[
             'name' => 'Saul Goodman',
-            'testimony' => 'Some things that Saul said',
+            'testimony' => 'Spectacular!',
             'image' => '/images/testimonials/testimonials-1.jpg',
             'job' => 'CEO & Founder'
         ],
         [
             'name' => 'Sara Wilsson',
-            'testimony' => 'Some things that Sara said',
+            'testimony' => 'Amazing!',
             'image' => '/images/testimonials/testimonials-2.jpg',
             'job' => 'Designer'
         ],
         [
             'name' => 'Jena Karlis',
-            'testimony' => 'Some things that Jena said',
+            'testimony' => 'Fancy and elegant.',
             'image' => '/images/testimonials/testimonials-3.jpg',
             'job' => 'Store Owner'
         ],
         [
             'name' => 'Matt Brandon',
-            'testimony' => 'Some things that Matt said',
+            'testimony' => 'Great food, atmosphere, and service.',
             'image' => '/images/testimonials/testimonials-4.jpg',
             'job' => 'Freelancer'
         ],
         [
             'name' => 'John Larson',
-            'testimony' => 'Some things that John said',
+            'testimony' => 'I would definitely go there again!',
             'image' => '/images/testimonials/testimonials-5.jpg',
             'job' => 'Entrepreneur'
         ]

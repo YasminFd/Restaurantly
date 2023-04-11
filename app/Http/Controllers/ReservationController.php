@@ -16,8 +16,8 @@ class ReservationController extends Controller
 {
     public function viewReservation()
     {
-        $min_date = Carbon::today();
-        $max_date = Carbon::now()->addWeek();
+        $min_date = Carbon::now();
+        $max_date = Carbon::now()->addWeek();;
         $tables = Table::where('status', TableStatus::Available)->get();
         $branches = branch::all();
         return view('reservations', ['minDate' => $min_date, 'maxDate' => $max_date, 'tables' => $tables, 'branches' => $branches]);
@@ -46,6 +46,14 @@ class ReservationController extends Controller
             $table  = Table::findOrFail($req->table_id);
             if ($req->guest_number > $table->guest_number)
                 return back()->with('warning', 'Please choose the table based on the guests number');
+
+            $pickupDate = Carbon::parse($reservation->res_date);
+            $pickupTime = Carbon::createFromTime($pickupDate->hour, $pickupDate->minute, $pickupDate->second);
+
+            $earliestTime = Carbon::createFromTimeString("17:00:00");
+            $lastTime = Carbon::createFromTimeString("23:00:00");
+            if (!$pickupTime->between($earliestTime, $lastTime))
+                return back()->with('warning','Time is outside openning hours (5:00pm to 11:00pm)');
         }
 
         $events = Reservation::where('type', ReservationType::Event)->get();

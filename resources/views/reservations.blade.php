@@ -1,6 +1,12 @@
 <x-header>
     @section('title', 'Book a Table')
 </x-header>
+
+<style>
+    * {
+        color-scheme:dark;
+    }
+    </style>
 <p>
     <br><br><br>
 </p>
@@ -66,7 +72,7 @@
                 <div class="col-lg-4 col-md-6 form-group mt-3">
                     <input type="datetime-local" name="res_date" class="form-control" id="date" placeholder="Date"
                         data-rule="minlen:4" data-msg="Please enter at least 4 chars"
-                        min="{{ $minDate->format('Y-m-d\TH:i:s') }}" max="{{ $maxDate->format('Y-m-d\TH:i:s') }}">
+                        min="{{ $minDate->format('Y-m-d\TH:i') }}" max="{{ $maxDate->format('Y-m-d\TH:i') }}">
                     <div class="validate"></div>
                 </div>
 
@@ -138,8 +144,8 @@
                 <div class="col-lg-4 col-md-6 form-group mt-3">
                     <input type="datetime-local" name="res_date" class="form-control" id="date"
                         placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars"
-                        min="{{ $minDate->addWeek()->format('Y-m-d\TH:i:s') }}"
-                        max="{{ $maxDate->addWeek()->format('Y-m-d\TH:i:s') }}">
+                        min="{{ $minDate->addWeek()->format('Y-m-d\TH:i') }}"
+                        max="{{ $maxDate->addWeek()->format('Y-m-d\TH:i') }}">
                     <div class="validate"></div>
                 </div>
 

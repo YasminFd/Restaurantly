@@ -1,15 +1,38 @@
 @extends('layouts.admin-layout')
 
 @section('title', 'Admin Tables')
+<style>
+    .section-title h2 {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0;
+        line-height: 1px;
+        margin: 40px 0 20px 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaaaaa;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .section-title h2::after {
+        content: "";
+        width: 120px;
+        height: 1px;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 4px 10px;
+    }
+</style>
 
 @section('content')
     <div>
         <br><br><br><br>
-        <h1>Admin Tables</h1>
-
         <div class="flex justify-end m-2 p-2 ">
             <a href="{{route('admin-tables.create')}}" class=" px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg text-white ">Add
                 Table</a>
+        </div>
+        <div class="section-title">
+            <h2>Tables</h2>
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
