@@ -40,7 +40,7 @@
                                         <div class="cart_item_total cart_info_col ">
                                             <div class="cart_item_title">Action</div>
                                             <div class="cart_item_text d-flex"><a href="{{ route('cart.edit', $item->id) }}"><img src="{{ asset('/images/edit.png') }}" width="15px" alt="Edit logo"></a></div>
-                                            <form action="{{ route('cart.destroy', $item['id']) }}" method="POST">
+                                            <form action="{{ route('cart.destroy', $item['id']) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"><img src="{{ asset('/images/delete.png') }}" width="19px"alt="Edit logo"></button>

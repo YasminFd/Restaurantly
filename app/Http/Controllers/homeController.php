@@ -32,6 +32,6 @@ class homeController extends Controller
 
         // delete the notification from the database
         $notificationToDelete->delete();
-        return $this->display();
+        return redirect('/');
     }
 }

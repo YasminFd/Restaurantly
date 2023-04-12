@@ -58,14 +58,15 @@
                         href="{{ route('cart.show', auth()->id()) }}">Cart &nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
                 <li>
-                    <?php $notifications = auth()->user()->unreadNotifications;?>
-                    @if(!empty($notifications))
-                    <li class="dropdown"><a href="#"><span>Notifications icon goes here</span> <i class="bi bi-chevron-down"></i></a>
+                    <?php $notifications = auth()->user()->unreadNotifications;$c=0; ?>
+                    @if(isset($notifications[0]->data))
+                    <li class="dropdown"><a href="#"><span>Notifications&nbsp;<img src="{{ asset('/images/active.png') }}" style="display:inline;"></span> <i class="bi bi-chevron-down"></i></a>
                     @else
                     <li class="dropdown"><a href="#"><span>Notifications</span> <i class="bi bi-chevron-down"></i></a>
                         @endif   <ul>
                             
                             @forelse($notifications as $notification)
+                                            <?php $c++ ?>
                                             <li class="alert alert-success text-xs" role="alert">
                                             {{ $notification->data['user_id'] }} {{ $notification->data['message'] }}
                                             <a href="{{ route('marks',$notification->id ) }}" class=" text-xs mark-as-read" style="display: inline;" >X
