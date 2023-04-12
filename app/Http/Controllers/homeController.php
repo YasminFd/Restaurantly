@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+USE APP\Models\Notification;
 
 
 class homeController extends Controller
@@ -19,7 +20,18 @@ class homeController extends Controller
         $testimonials = DB::table('testimonials')->get();
         return view('index',['testimonials'=>$testimonials]);
     }
-    function redirects(){
-        
+    public function mark($id)
+    {
+        $user = Auth::user();
+
+        // retrieve the notifications for the user
+        $notifications = $user->notifications;
+
+        // find the notification you want to delete
+        $notificationToDelete = $notifications->find($id);
+
+        // delete the notification from the database
+        $notificationToDelete->delete();
+        return $this->display();
     }
 }

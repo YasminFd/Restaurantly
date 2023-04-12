@@ -16,21 +16,21 @@ class ReviewsSeeder extends Seeder
         //
         DB::table('reviews')->insert([
             [
-                'name' => 'Jana',
+                'name' => 'Johny Depp',
                 'rating' => 5,
                 'comment' => 'one of my favorites!',
                 'meal_id' => 3,
                 'created_at'=>now()
             ],
             [
-                'name' => 'Sara',
+                'name' => 'Mark Zackerberg',
                 'rating' => 5,
                 'comment' => 'one of my favorites!',
                 'meal_id' => 1,
                 'created_at'=>now()
             ],
             [
-                'name' => 'Jessica',
+                'name' => 'Jeff Bezos',
                 'rating' => 5,
                 'comment' => 'one of my favorites!',
                 'meal_id' => 7,

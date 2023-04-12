@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\receipt;
 use Illuminate\Http\Request;
+use App\Notifications\TestingNotification;
 
 class orderController extends Controller
 {
@@ -52,7 +53,13 @@ class orderController extends Controller
         }
         $user = user::find($i);
         $info[$req->name] = $order_details;
+        $data=branch::find($req->branch_id);
         Mail::to($user->email)->send(new receipt($info, $total));
+        $admin = User::where('user_type', 1)->first();
+        if ($admin) {
+            $admin->notify(new TestingNotification('Branch: '.$data->name,'new order has been made!'));
+        }
+        $user->notify(new TestingNotification('Order: ','order made successfully!'));
         return redirect()->route('home.index')->with('success','Order Sent Successfully!');
     }
 }

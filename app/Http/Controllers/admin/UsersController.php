@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\User;
+use App\Models\Ordered_item;
 use App\Models\order;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -56,8 +57,6 @@ class UsersController extends Controller
     {
         //
         $orders=order::where('user_id',$id)->get();
-        if(empty($order))
-        return redirect(route('admin-users.index'))->with('danger','No Order History Found');
         return view('admin.users.show',['data'=>$orders]);
     }
 
@@ -82,6 +81,16 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
+        $data=order::where('user_id',$id)->get();
+        foreach($data as $order){
+            $info=Ordered_item::where('order_id',$order->id)->get();
+            foreach($info as $x)
+            {
+                $x->delete();
+            }
+            $order->delete();
+        }
+        
         $user = User::findOrFail($id);
         $user->delete();
         return redirect(route('admin-users.index'))->with('danger', 'Employee deleted successfully');

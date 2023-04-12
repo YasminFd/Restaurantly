@@ -160,6 +160,13 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin-notifications') }}">
+                        <i class="menu-icon mdi mdi-chart-line"></i>
+                        <span class="menu-title">Notifications</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                </li>
             </ul>
 
         </nav>

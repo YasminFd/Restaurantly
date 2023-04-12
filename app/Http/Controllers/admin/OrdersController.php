@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Order;
 use App\Models\Ordered_item;
+use App\Models\User;
+use App\Notifications\TestingNotification;
 
 class OrdersController extends Controller
 {
@@ -68,6 +70,9 @@ class OrdersController extends Controller
         $data=order::find($id);
         $data->status=$req->status;
         $data->save();
+        $user=user::find($data->user_id);
+        $user->notify(new TestingNotification('Status :'.$data->status,'your order status has changed'));
+    
         return $this->index();
     }
 

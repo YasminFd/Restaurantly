@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\contactsController;
-use App\Http\Controllers\mailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\commentsController;
 use App\Http\Controllers\admin\ReservationController;
@@ -17,6 +16,8 @@ use App\Http\Controllers\admin\MealController;
 use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\ordersController;
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\NotificationsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReservationController as userReservationController;
 
@@ -42,6 +43,7 @@ Route::get('/contact', [contactsController::class, 'display'])->name('home.conta
 Route::post('/send', [contactsController::class, 'sendInfo'])->name('contact');
 
 
+
 Route::get('/reservations', [userReservationController::class, 'viewReservation'])->name('home.reservations');
 Route::get('/bookTable', [userReservationController::class, 'addReservation'])->name('bookTable');
 Route::get('/bookEvent', [userReservationController::class, 'addReservation'])->name('bookEvent');
@@ -65,10 +67,20 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-
+Route::get('/marks/{id}', [homeController::class, 'mark'])->name('marks');
 
 
 Route::middleware(['admin'])->group(function () {
+    //Route::get('/admin', [AdminController::class, 'index'])->name('admin-index');
+    Route::get('/mark/{id}', [AdminController::class, 'mark'])->name('mark');
+    Route::get('/mark-all', [AdminController::class, 'markNotification'])->name('markRead');
+
+    Route::get('/delete/{id}', [AdminController::class, 'deleteNotification'])->name('delete');
+    Route::get('/delete-all', [AdminController::class, 'deleteNotifications'])->name('deleteAll');
+
+    Route::get('/admin-notifications', function(){
+        return view('admin.notifications');
+    })->name('admin-notifications');
 
     Route::resource('admin-reservations', ReservationController::class);
     Route::resource('admin-tables', TableController::class);
