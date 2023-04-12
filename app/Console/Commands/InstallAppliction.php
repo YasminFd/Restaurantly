@@ -36,6 +36,7 @@ class InstallAppliction extends Command
     private function createDatabase()
     {
         if ($this->testDbConnection()) return;
+
         $this->line("You need to choose a database type.");
 
         install_database:
@@ -135,6 +136,11 @@ class InstallAppliction extends Command
     private function seed()
     {
         $this->line("\nStarting DB Seeding...");
+        if(DB::table('users')->where("id",1)->exists())
+        {
+            $this->line("\nSeeding done before, Refershing Seeds");
+            $this->call('migrate:refresh');
+        }
         $this->call('db:seed');
     }
 
