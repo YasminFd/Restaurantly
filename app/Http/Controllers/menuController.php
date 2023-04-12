@@ -23,7 +23,6 @@ class menuController extends Controller
             $info[$category->name] = $category->meals;
         }
 
-        
         return view('menu.index', ['data' => $info]);
     }
     public function viewMeal(string $id){

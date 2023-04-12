@@ -56,6 +56,8 @@ class UsersController extends Controller
     {
         //
         $orders=order::where('user_id',$id)->get();
+        if(empty($order))
+        return redirect(route('admin-users.index'))->with('danger','No Order History Found');
         return view('admin.users.show',['data'=>$orders]);
     }
 

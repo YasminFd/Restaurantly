@@ -43,6 +43,7 @@ class OrdersController extends Controller
     public function show(string $id)
     {
         //
+        
         $total=order::find($id)->total;
         $data=ordered_item::where('order_id',$id)->get();
         return view('admin.orders.show',['data'=>$data,'total'=>$total]);
