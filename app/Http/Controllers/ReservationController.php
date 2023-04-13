@@ -12,23 +12,27 @@ use App\Models\User;
 use Carbon\Carbon;
 use App\Notifications\TestingNotification;
 
-use Illuminate\Http\Request;
-
 class ReservationController extends Controller
 {
+    // View the Reservation forms and page
     public function viewReservation()
     {
+        // Define min & max dates for the times of table reservation
         $min_date = Carbon::now();
-        $max_date = Carbon::now()->addWeek();;
+        $max_date = Carbon::now()->addWeek();
+
+        //Only available tables are shown
         $tables = Table::where('status', TableStatus::Available)->get();
         $branches = branch::all();
+
         return view('reservations', ['minDate' => $min_date, 'maxDate' => $max_date, 'tables' => $tables, 'branches' => $branches]);
     }
 
+    // Add a reservation to the database
     public function addReservation(ReservationStoreRequest $req)
     {
+        //Create a new reservation
         $reservation = new Reservation();
-        $reservation = new reservation();
         $reservation->first_name = $req->first_name;
         $reservation->last_name = $req->last_name;
         $reservation->email = $req->email;
@@ -39,25 +43,28 @@ class ReservationController extends Controller
         $reservation->guest_number = $req->guest_number;
         $reservation->message = $req->message;
 
+        // Tailor the input depending on the reservation type
         if (!isset($req->table_id)) {
             $reservation->type = ReservationType::Event;
         } else {
 
             $reservation->type = ReservationType::Table;
 
+            // Guest number cannot be > than the table capacity
             $table  = Table::findOrFail($req->table_id);
             if ($req->guest_number > $table->guest_number)
                 return back()->with('warning', 'Please choose the table based on the guests number');
 
+            // Table reservation should be between opening hours
             $pickupDate = Carbon::parse($reservation->res_date);
             $pickupTime = Carbon::createFromTime($pickupDate->hour, $pickupDate->minute, $pickupDate->second);
-
             $earliestTime = Carbon::createFromTimeString("17:00:00");
             $lastTime = Carbon::createFromTimeString("23:00:00");
             if (!$pickupTime->between($earliestTime, $lastTime))
-                return back()->with('warning','Time is outside openning hours (5:00pm to 11:00pm)');
+                return back()->with('warning', 'Time is outside openning hours (5:00pm to 11:00pm)');
         }
 
+        // Table reservation should not be in the date of an event reservation
         $events = Reservation::where('type', ReservationType::Event)->get();
         $res_date = Carbon::parse($reservation->res_date)->format('Y-m-d');
         foreach ($events as $event) {
@@ -67,15 +74,18 @@ class ReservationController extends Controller
             }
         }
 
+        // save reservation
         $reservation->save();
-        $data=branch::find($req->branch_id);
+
+        // Send notification to admin
+        $data = branch::find($req->branch_id);
         $admin = User::where('user_type', 1)->get();
-        foreach($admin as $admin1)
-        {
+        foreach ($admin as $admin1) {
             if ($admin1) {
-            $admin1->notify(new TestingNotification('Branch: '.$data->name,'new reservation has been made!'));
+                $admin1->notify(new TestingNotification('Branch: ' . $data->name, 'new reservation has been made!'));
+            }
         }
-        }
+        
         return redirect(route('home.reservations'))->with('success', 'Reservation Complete');
     }
 }

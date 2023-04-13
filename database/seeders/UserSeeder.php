@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -16,33 +14,34 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('users')->insert([[
-                
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('123123123A@'),
-            'user_type' => '1',
-            'updated_at' => now(),
-            'created_at' => now(),
-        ],
-         [
-                
-            'name' => 'Jana Al Sabeh',
-            'email' => 'jana@gmail.com',
-            'password' => Hash::make('123123123A@'),
-            'user_type' => '0',
-            'updated_at' => now(),
-            'created_at' => now(),
-         ],
-         [
-                
-            'name' => 'Yasmine Fadel',
-            'email' => 'yasmine@gmail.com',
-            'password' => Hash::make('123123123A@'),
-            'user_type' => '0',
-            'updated_at' => now(),
-            'created_at' => now(),
-        ]
-    ]);
+        DB::table('users')->insert([
+            [
+
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('123123123A@'),
+                'user_type' => '1',
+                'updated_at' => now(),
+                'created_at' => now(),
+            ],
+            [
+
+                'name' => 'Jana Al Sabeh',
+                'email' => 'jana@gmail.com',
+                'password' => Hash::make('123123123A@'),
+                'user_type' => '0',
+                'updated_at' => now(),
+                'created_at' => now(),
+            ],
+            [
+
+                'name' => 'Yasmine Fadel',
+                'email' => 'yasmine@gmail.com',
+                'password' => Hash::make('123123123A@'),
+                'user_type' => '0',
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]
+        ]);
     }
 }

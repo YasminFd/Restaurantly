@@ -1,24 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-USE APP\Models\Notification;
 
 
 class homeController extends Controller
 {
-    function display(){
+    // Display the interface depending on the logged in user or not
+    function display()
+    {
         if (Auth::check()) {
-        $userType= Auth:: User()->user_type;
-        if($userType==1)
-        {
-            return view('admin.index');
-        }}
+            $userType = Auth::User()->user_type;
+            if ($userType == 1) {
+                return view('admin.index');
+            }
+        }
         $testimonials = DB::table('testimonials')->get();
-        return view('index',['testimonials'=>$testimonials]);
+        return view('index', ['testimonials' => $testimonials]);
     }
     public function mark($id)
     {

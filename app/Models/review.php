@@ -14,6 +14,8 @@ class review extends Model
         'rating',
         'meal_id'
     ];
+
+    // Each review belongs to only one meal
     public function meal()
     {
         return $this->belongsTo(meal::class);

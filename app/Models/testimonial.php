@@ -14,6 +14,4 @@ class testimonial extends Model
         'image',
         'job'
     ];
-    
 }
-

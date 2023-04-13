@@ -86,20 +86,22 @@
 
 
     <section>
-        <div class="section-title" style="display: flex; flex-direction:row; justify-content:start; align-items:center; text-align:start;">
+        <div class="section-title"
+            style="display: flex; flex-direction:row; justify-content:start; align-items:center; text-align:start;">
             <h2>Reviews</h2>
             <em>{{ $average }} / 5</em>
         </div>
         <div class="menu menu-content">
-        <!--<div style="display:flex; flex-direction:column; justify-content:start; align-items:center; gap:15px">
-        --> @foreach ($info as $review)
+            <!--<div style="display:flex; flex-direction:column; justify-content:start; align-items:center; gap:15px">
+        -->
+            @foreach ($info as $review)
                 <div>
                     <h4 style="color:#cda45e;">{{ $review->name }}</h4>
                     <p><strong> Review: {{ $review->rating }} / 5</strong></p>
                     <p style="color: #eeecec;"><em>{{ $review->comment }}</em></p>
                 </div>
             @endforeach
-        <!--</div>-->
+            <!--</div>-->
         </div>
     </section>
 </main>

@@ -51,10 +51,10 @@
                             Job
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            
+
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            
+
                         </th>
                     </tr>
                 </thead>
@@ -62,8 +62,7 @@
                     @foreach ($data as $testimonial)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                 {{ $testimonial['name'] }}
                             </th>
                             <td class="px-6 py-4">

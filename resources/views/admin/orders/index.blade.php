@@ -60,13 +60,13 @@
                             phone
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            
+
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            
+
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            
+
                         </th>
                     </tr>
                 </thead>
@@ -79,10 +79,10 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $order['id'] }}
-                            </th>
+                                </th>
                             <td class="px-6 py-4">
                                 {{ $order['created_at'] }}
-                            </th>
+                                </th>
                             <td class="px-6 py-4">
                                 {{ $order->branch->name }}
                             </td>
@@ -99,12 +99,12 @@
                                 {{ $order['phone_number'] }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href={{ route('admin-orders.show',$order->id) }}>
+                                <a href={{ route('admin-orders.show', $order->id) }}>
                                     Show details
                                 </a>
                             </td>
                             <td class="px-6 py-4">
-                                <a href={{ route('admin-orders.edit',$order->id) }}>
+                                <a href={{ route('admin-orders.edit', $order->id) }}>
                                     edit status
                                 </a>
                             </td>

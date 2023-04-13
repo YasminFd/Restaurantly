@@ -13,20 +13,19 @@ input[type="week"],
 input[multiple],
 textarea,
 select {
-   border: 1px solid #cda45e !important;
-   border-radius: 13px !important;
-   margin: 5px !important;
+    border: 1px solid #cda45e !important;
+    border-radius: 13px !important;
+    margin: 5px !important;
 }
 
 .add {
-   background-color: #cda45e !important;
-   color:white;
-   border-radius: 50px;
-   padding: 10px !important;
-   margin: 10px
-   
+    background-color: #cda45e !important;
+    color: white;
+    border-radius: 50px;
+    padding: 10px !important;
+    margin: 10px;
 }
 
 .form-control {
-   height: 50% !important;
+    height: 50% !important;
 }

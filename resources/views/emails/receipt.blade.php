@@ -1,5 +1,5 @@
 <h1>Your Order</h1>
-@foreach($req as $user=>$data)
+@foreach ($req as $user => $data)
     <table>
         <tr>
             <th>Food Name</th>

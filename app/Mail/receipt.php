@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -19,7 +18,6 @@ class receipt extends Mailable
     private $user,$total;
     public function __construct($info,$x)
     {
-        //
         $this->user=$info;
         $this->total=$x;
     }

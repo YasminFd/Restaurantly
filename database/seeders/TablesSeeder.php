@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Enums\TableLocation;
 use App\Enums\TableStatus;
-use App\Models\Table;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

@@ -3,22 +3,16 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\File;
-use App\Models\Meal;
 use App\Models\category;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Response;
 use App\Http\Requests\CategoryStoreRequest;
 
 
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the categories.
      */
     public function index()
     {
@@ -29,7 +23,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new category.
      */
     public function create()
     {
@@ -37,7 +31,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created category in storage.
      */
     public function store(CategoryStoreRequest $req)
     {
@@ -49,15 +43,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified category.
      */
     public function edit(string $id)
     {
@@ -66,11 +52,10 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified category in storage.
      */
     public function update(Request $req, string $id)
     {
-        //
         $menu=category::find($id);
         $menu->name=$req->name;
         $menu->save();
@@ -78,18 +63,11 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified category from storage.
      */
     public function destroy(string $id)
     {
         $category = category::findOrFail($id);
-        /*
-        $meals = Meal::where('category_id', $id)->get();
-        foreach($meals as $meal) {
-            $meal->delete();
-        }
-        */
-
         $category->detachAll();
         $category->delete();
         return redirect(route('admin-categories.index'))->with('danger', 'Menu deleted successfully');

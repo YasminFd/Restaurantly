@@ -25,7 +25,8 @@
 
             </div>
         </div>
-    </section><!-- End Hero -->
+    </section>
+    <!-- End Hero -->
 
     <main id="main">
 
@@ -68,9 +69,10 @@
                 </div>
 
             </div>
-        </section><!-- End About Section -->
+        </section>
+        <!-- End About Section -->
 
-        <!-- ======= Why Us Section ======= -->
+        <!--  Why Us Section  -->
         <section id="why-us" class="why-us">
             <div class="container" data-aos="fade-up">
 
@@ -223,11 +225,12 @@
                 </div>
 
             </div>
-        </section><!-- End Events Section -->
+        </section>
+        <!-- End Events Section -->
 
 
 
-        <!-- ======= Testimonials Section ======= -->
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section-bg">
             <div class="container" data-aos="fade-up">
 
@@ -257,9 +260,10 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End Testimonials Section -->
+        </section>
+        <!-- End Testimonials Section -->
 
-        <!-- ======= Gallery Section ======= -->
+        <!-- Gallery Section -->
         <section id="gallery" class="gallery">
 
             <div class="container" data-aos="fade-up">
@@ -282,7 +286,7 @@
                         echo '<div class="col-lg-3 col-md-4"><div class="gallery-item"><a href="' .
                             $name .
                             '" class="gallery-lightbox" data-gall="gallery-item">
-                                                                                                                                                                        <img src="' .
+                                                                                                                                                                                            <img src="' .
                             $name .
                             '" alt="" class="img-fluid"></a></div></div>';
                     }
@@ -290,11 +294,11 @@
                     ?>
                 </div>
             </div>
-        </section><!-- End Gallery Section -->
+        </section>
+        <!-- End Gallery Section -->
 
 
-        <!-- ======= Chefs Section ======= -->
-
+        <!-- Chefs Section -->
         <section id="chefs" class="chefs">
             <div class="container" data-aos="fade-up">
 
@@ -311,7 +315,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src='{{asset('/images/chefs/'.$directory[2])}}' class="img-fluid" alt="">
+                            <img src='{{ asset('/images/chefs/' . $directory[2]) }}' class="img-fluid" alt="">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Master Chef</h4>
@@ -322,7 +326,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="200">
-                            <img src='{{asset('/images/chefs/'.$directory[3])}}' class="img-fluid" alt="">
+                            <img src='{{ asset('/images/chefs/' . $directory[3]) }}' class="img-fluid" alt="">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Patissier</h4>
@@ -334,7 +338,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="300">
-                            <img src='{{asset('/images/chefs/'.$directory[4])}}'class="img-fluid" alt="">
+                            <img src='{{ asset('/images/chefs/' . $directory[4]) }}'class="img-fluid" alt="">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Cook</h4>
@@ -344,17 +348,13 @@
                     </div>
 
                 </div>
-
             </div>
         </section>
         <!-- End Chefs Section -->
+    </main>
+    <!-- End main -->
 
-
-
-
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
+    <!-- Footer -->
     <x-footer />
 
 </body>

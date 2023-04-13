@@ -1,5 +1,8 @@
 <?php
-
+/*
+This folder is for the installation of the application.
+It handles database migrations and seeding.
+*/
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;

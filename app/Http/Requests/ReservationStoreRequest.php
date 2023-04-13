@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Http\Requests;
-
-use App\Rules\DateBetween;
-use App\Rules\TimeBetween;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReservationStoreRequest extends FormRequest
@@ -26,9 +23,9 @@ class ReservationStoreRequest extends FormRequest
         return [
             'first_name' => ['required'],
             'last_name' => ['required'],
-            'email' => ['required','email'],
+            'email' => ['required', 'email'],
             'phone_number' => ['required'],
-            'res_date' => ['required','date'],
+            'res_date' => ['required', 'date'],
             'branch_id' => ['required'],
         ];
     }
