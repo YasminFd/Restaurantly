@@ -15,7 +15,7 @@ class AdminController extends Controller
     public function mark($id)
     {
         auth()->user()->unreadNotifications->where('id', $id)->markAsRead();
-        return view('admin.index');
+        return redirect('/');
     }
     public function markNotification()
     {
@@ -25,14 +25,14 @@ class AdminController extends Controller
             auth()->user()->unreadNotifications->where('id', $id)->markAsRead();
         }
         
-        return redirect()->back();
+        return redirect('/');
     }
     public function deleteNotification($id){
         $user = auth()->user();
         $notifications = $user->notifications;
         $notificationToDelete = $notifications->find($id);
         $notificationToDelete->delete();
-        return view('admin.notifications');
+        return redirect('/admin-notifications');
     }
     public function deleteNotifications(){
 
@@ -42,6 +42,6 @@ class AdminController extends Controller
         {
             $not->delete();
         }
-        return view('admin.notifications');
+        return redirect('/admin-notifications');
     }
 }

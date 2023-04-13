@@ -55,10 +55,14 @@ class orderController extends Controller
         $info[$req->name] = $order_details;
         $data=branch::find($req->branch_id);
         Mail::to($user->email)->send(new receipt($info, $total));
-        $admin = User::where('user_type', 1)->first();
-        if ($admin) {
-            $admin->notify(new TestingNotification('Branch: '.$data->name,'new order has been made!'));
+        $admin = User::where('user_type', 1)->get();
+        foreach($admin as $admin1)
+        {
+            if ($admin1) {
+            $admin1->notify(new TestingNotification('Branch: '.$data->name,'new order has been made!'));
         }
+        }
+        
         $user->notify(new TestingNotification('Order: ','order made successfully!'));
         return redirect()->route('home.index')->with('success','Order Sent Successfully!');
     }

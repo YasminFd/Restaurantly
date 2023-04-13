@@ -32,10 +32,12 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-
-        $admin = User::where('user_type', 1)->first();
-        if ($admin) {
-            $admin->notify(new TestingNotification('User: '.$user->name,'new user registored successfully!'));
+        $admin = User::where('user_type', 1)->get();
+        foreach($admin as $admin1)
+        {
+            if ($admin1) {
+            $admin1->notify(new TestingNotification('User: '.$user->name,'new user has been registered!'));
+        }
         }
         return $user;
     }

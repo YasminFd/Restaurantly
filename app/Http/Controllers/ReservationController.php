@@ -69,9 +69,12 @@ class ReservationController extends Controller
 
         $reservation->save();
         $data=branch::find($req->branch_id);
-        $admin = User::where('user_type', 1)->first();
-        if ($admin) {
-            $admin->notify(new TestingNotification('Branch:'.$data->name,'new reservation has been made!'));
+        $admin = User::where('user_type', 1)->get();
+        foreach($admin as $admin1)
+        {
+            if ($admin1) {
+            $admin1->notify(new TestingNotification('Branch: '.$data->name,'new reservation has been made!'));
+        }
         }
         return redirect(route('home.reservations'))->with('success', 'Reservation Complete');
     }

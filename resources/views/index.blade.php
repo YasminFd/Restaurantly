@@ -4,11 +4,6 @@
 <html>
 
 <body>
-    @if(session('success'))
-        <script>
-            alert('{{ session('success') }}');
-        </script>
-    @endif
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
