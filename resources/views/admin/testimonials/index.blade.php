@@ -42,13 +42,13 @@
                             Name
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Job
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Testimony
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Image
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Job
                         </th>
                         <th scope="col" class="px-6 py-3">
 
