@@ -183,12 +183,12 @@ Acounts are created manually by the admin by adding a new employee in the admin 
 
 
 
-## Index page:
+## Index page
 Shows unread notification for this employee, with the ability to
 -   mark one notification as read
 -   mark all notifications as read
 
-## Notifications Page:
+## Notifications Page
 
 Shows all notifications received with options to delete any or all of them 
 
@@ -197,7 +197,7 @@ Types of notifications:
 -   Order made
 -   User registrations
 
-## Testimonials:
+## Testimonials
 
 Lists all testimonials 
 
@@ -205,24 +205,24 @@ They are added manually by the admin to showcase on home page.
 
 Options include: create, edit, or delete
 
-## Categories:
+## Categories
 List all categories 
 
 Options include: create, edit, or delete
 
-## Meals:
+## Meals
 
 Lists all meals with their information about which category they belong to, price, description and image.
 
 Options include: create, edit, or delete
 
-## Branches:
+## Branches
 
 Lists contact information for all branches saved
 
 Options include: create, edit, or delete
 
-## Users:
+## Users
 
 Lists all registered accounts to the website and differentiate their type whether they are for customers or employees.
 
@@ -231,26 +231,26 @@ Lists all registered accounts to the website and differentiate their type whethe
 
 Options include: delete 
 
-## Orders:
+## Orders
 
 Lists all orders made by the customers with informations filled about them
 -   can choose to view list of meal items of each order with quantity and price
 -   admin can edit the status of the order.
     *This automatically sends notification to the user account to keep track of it*
 -   Delete order
-## Reviews:
+## Reviews
 
 Lists all reviews added by customers with the meal it was written for starting from the most recent one
 
 Options include: delete unwanted reviews.
 
-## Tables:
+## Tables
 
 Lists tables in the restaurant for reservation purposes, each with the status, guest number, table name and branch it belongs too.
 
 Options include: create, edit, or delete
 
-## Reservations:
+## Reservations
 
 Lists all reservations both for tables or events
 
