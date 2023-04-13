@@ -1,66 +1,177 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Goal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Restaurantly is a restaurant CMS. 
 
-## About Laravel
+The webiste would introduce the restaurant to its customers, from the menu it offers, to its location and various other services that the customer can benefit from through the website such as reservation options, forums, contacts or even online ordering. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This application is developed to be a dynamic website, offering the admin easy access to manage and update his website’s content while managing customers activity all in one place
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Upon downloading/cloning the project, go to the root rolder and double click on the **install.bat file**
 
-## Learning Laravel
+This file is a bash file that will 
+1.  Install composer
+2.  Install npm
+3.  Migrate the database
+4.  Seed the databe
+5.  Start npm dev
+6.  Start php artisan serve
+7.  Go to the localhost
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Note: The default user is root**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    If you want to change the user:
+    Go to env.example and change the DB_USERNAME & DB_PASSWORD variables
+# Admin Dashboard
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    user: admin
+    email: admin@gmail.com
+    password: 123123123A@
 
-## Laravel Sponsors
+# Customer Interface
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    user1: Jana Al Sabeh
+    email: jana@gmail.com
+    password: 123123123A@
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+    user2: Yasmine Fadel
+    email: yasmine@gmail.com
+    password: 123123123A@
 
-## Contributing
+# MailTrap Sign In
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Inorder to view the emails that would be sent, enter the url and choose log in option with the following credentials.
 
-## Code of Conduct
+url: https://mailtrap.io
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+email: restaurantlyfood@gmail.com
 
-## Security Vulnerabilities
+password: RestaurantlyFood101
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Authentication
 
-## License
+Options are found under accounts drop-down in header
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Login
+
+Use one of the credentials above, or register a new account
+
+## Register
+
+-   email must be unique max 255 characters
+-   required length 10 characters, at least one capital letter, one special character, one digit
+
+# Pages
+
+## Home Page
+
+This represents the main page of the customers. It includes:
+
+-   **Hero section**: An introduction and small video about Restaurantly
+-   **Testimonial secton**: retrieves data from testimonials database and diplays them
+
+-   **Gallery section**: loop over 'images/gallery' in public directory and displays the images
+
+-   **Cheffs section**: loop over 'images/chefs' in public directory and displays the images
+
+## Menu Page
+
+To reach this page either click on menu from navigation bar or click on our menu button in the hero section. It includes:
+
+-   **List** of each category under it all meals belonging to this category.
+-   **Offer Section**: Shows meals of type offer
+-   **Average rating**: Under each meal item
+
+_On click of each meal, takes us to 'menu/show' page to view meal details_
+
+## Show Meal
+
+To reach this page click on the name of any meal in menu page
+
+-   **Details Section**: abot the meal clicked (image, name, description, price)
+-   **Review form**: form for the customer to enter his/her review.
+
+    (_no need to be authenticated to enter a review to stay anonymous_)
+
+-   **Review section**: Ratings made by users.
+-   **Add to cart form**: Customer can add the quantity of the meal to his/her cart
+    _only authenticated users can add items to cart to proceed with their order_
+
+## Cart
+
+When logged in, cart option will appear in the navbar
+
+-   **Cart meal**: displays all the meal added to cart with the details (quantity & total)
+
+    _if the cart is empty, an order cannot be placed_
+
+-   **Clear cart**: empties the cart
+
+-   **Edit meal**: redirects back to show meal with quantity chosen before to edit.
+
+-   **Remove meal**: removes meal from the cart and refreshes the view.
+
+-   **Order Form**: enter address, name, branch and phone number and submit
+
+On submit:
+
+-   An Email will be sent
+
+_check mailtrap inbox an email will be send to the users email with receipt info_
+
+    Subject: Receipt
+    Body: Items ordered with meal name,unit price, quantity and total price
+
+Redirects you to home page and a notification is received in notification drop-down in the header.
+
+## Notifications
+
+When logged in, notifications option will appear in header
+
+Two types of notifications for customers:
+
+-   Order placed successfully
+-   Order status has been changed _when admin edits the order status_
+
+If user has received an notifications an active bell will appear next to the notification.
+
+## Reservations
+
+Reached when clicking on book a table option in the header or home page hero section
+
+**No need to be logged in to make a reservation**
+
+Two type of reservations:
+
+-   **Book a table**: choose date & time, guest number, name, phone, table,email and branch
+-   **Book for event**: choose date & time, number of guests,message for breif event description,and branch
+
+**CONSTRAINTS**
+
+-   **Table reservations**:
+
+    -   Date should be within 7 days of current date
+    -   Time should be from 5 till 11 pm (opening hours)
+    -   Can't reserve a tabe if an event is already reserved on this date.
+
+-   **Event reservations**: Date should be a minimum of 1 week from the current date
+
+## Contact Us
+
+Reached by clicking on contact option in header. It includes:
+
+-   **Branches section**: dispay all available branches of the restaurant each with url-location, address, phone number and name.
+
+-   **Contact Form**: Information of name, email,subject, and message to send email.
+
+Check maitrap inbox two emails will be present:
+
+1.  **Customer service mail**: send all info filled in the form to address restaurantly@gmail
+2.  **Success Message**: informing the user that the message was send successfully.
+
+After sending, and alert appears to infrom the user about successfully sending the message and redirects him to the same page.
+
+**Note: for unstable internet connection, an error might occur.**
