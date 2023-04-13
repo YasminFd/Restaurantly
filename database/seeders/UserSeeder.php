@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 
             'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('11223344'),
+            'password' => Hash::make('123123123A@'),
             'user_type' => '1',
             'updated_at' => now(),
             'created_at' => now(),
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 
             'name' => 'Jana Al Sabeh',
             'email' => 'jana@gmail.com',
-            'password' => Hash::make('1234567890'),
+            'password' => Hash::make('123123123A@'),
             'user_type' => '0',
             'updated_at' => now(),
             'created_at' => now(),
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 
             'name' => 'Yasmine Fadel',
             'email' => 'yasmine@gmail.com',
-            'password' => Hash::make('abcdefghijk'),
+            'password' => Hash::make('123123123A@'),
             'user_type' => '0',
             'updated_at' => now(),
             'created_at' => now(),
