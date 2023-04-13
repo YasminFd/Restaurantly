@@ -45,11 +45,9 @@ This file is a bash file that will
 
 Inorder to view the emails that would be sent, enter the url and choose log in option with the following credentials.
 
-url: https://mailtrap.io
-
-email: restaurantlyfood@gmail.com
-
-password: RestaurantlyFood101
+    url: https://mailtrap.io
+    email: restaurantlyfood@gmail.com
+    password: RestaurantlyFood101
 
 # Authentication
 
