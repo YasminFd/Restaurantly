@@ -14,7 +14,7 @@ This file is a bash file that will
 1.  Install composer
 2.  Install npm
 3.  Migrate the database
-4.  Seed the databe
+4.  Seed the database
 5.  Start npm dev
 6.  Start php artisan serve
 7.  Go to the localhost
@@ -23,11 +23,6 @@ This file is a bash file that will
 
     If you want to change the user:
     Go to env.example and change the DB_USERNAME & DB_PASSWORD variables
-# Admin Dashboard
-
-    user: admin
-    email: admin@gmail.com
-    password: 123123123A@
 
 # Customer Interface
 
@@ -173,3 +168,94 @@ Check maitrap inbox two emails will be present:
 After sending, and alert appears to infrom the user about successfully sending the message and redirects him to the same page.
 
 **Note: for unstable internet connection, an error might occur.**
+
+# Admin Pages
+
+## Login
+
+    user: admin
+    email: admin@gmail.com
+    password: 123123123A@
+
+## Register
+
+Acounts are created manually by the admin by adding a new employee in the admin users page
+
+
+
+## Index page:
+Shows unread notification for this employee, with the ability to
+-   mark one notification as read
+-   mark all notifications as read
+
+## Notifications Page:
+
+Shows all notifications received with options to delete any or all of them 
+
+Types of notifications:
+-   Reservation made
+-   Order made
+-   User registrations
+
+## Testimonials:
+
+Lists all testimonials 
+
+They are added manually by the admin to showcase on home page.
+
+Options include: create, edit, or delete
+
+## Categories:
+List all categories 
+
+Options include: create, edit, or delete
+
+## Meals:
+
+Lists all meals with their information about which category they belong to, price, description and image.
+
+Options include: create, edit, or delete
+
+## Branches:
+
+Lists contact information for all branches saved
+
+Options include: create, edit, or delete
+
+## Users:
+
+Lists all registered accounts to the website and differentiate their type whether they are for customers or employees.
+
+-   For customers, it can show all order history made by the specified account.
+-   Employees can't register themselves, admin has to create their account manually.
+
+Options include: delete 
+
+## Orders:
+
+Lists all orders made by the customers with informations filled about them
+-   can choose to view list of meal items of each order with quantity and price
+-   admin can edit the status of the order.
+    *This automatically sends notification to the user account to keep track of it*
+-   Delete order
+## Reviews:
+
+Lists all reviews added by customers with the meal it was written for starting from the most recent one
+
+Options include: delete unwanted reviews.
+
+## Tables:
+
+Lists tables in the restaurant for reservation purposes, each with the status, guest number, table name and branch it belongs too.
+
+Options include: create, edit, or delete
+
+## Reservations:
+
+Lists all reservations both for tables or events
+
+Options include: create, edit, or delete
+
+---
+
+**All above operations are supported by forms to fill with adequite values concerning the editing and creation of values. With each operation an alert would be shown to confirm success, danger, or warning**
