@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Enums\ReservationType;
 use App\Enums\TableStatus;
 use App\Http\Requests\ReservationStoreRequest;

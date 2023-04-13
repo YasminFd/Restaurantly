@@ -42,7 +42,7 @@
 <!-- Book a Table Section-->
 <section id="book-a-table" class="book-a-table">
     <div class="container" data-aos="fade-up">
-
+    
         <div class="section-title">
             <h2>Reservation</h2>
             <p>Book a Table</p>
