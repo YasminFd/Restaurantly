@@ -1,12 +1,12 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Admin Contacts')
+@section('title', 'Add Category')
 
 @section('content')
     <br><br><br>
 
     <div>
-        <form action="{{route('admin-categories.store')}}" method="post" role="form">
+        <form action="{{ route('admin-categories.store') }}" method="post" role="form">
             @csrf
             <div class="row">
                 <div>

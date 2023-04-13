@@ -16,4 +16,10 @@ class Order extends Model
         'address',
         'phone_number'
     ];
+
+    // Order belongs to one branch
+    public function branch()
+    {
+        return $this->belongsTo(branch::class);
+    }
 }

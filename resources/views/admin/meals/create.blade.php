@@ -1,12 +1,12 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Admin Contacts')
+@section('title', 'Add Meal')
 
 @section('content')
     <br><br><br>
 
     <div class="w-full">
-        <form action="{{route('admin-meals.store')}}" method="post" role="form" enctype="multipart/form-data">
+        <form action="{{ route('admin-meals.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div>

@@ -22,11 +22,10 @@ class TableStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-            'name'=>['required'],
-            'location'=>['required'],
-            'guest_number'=>['required'],
-            'branch_id'=>['required'],
+            'name' => ['required'],
+            'location' => ['required'],
+            'guest_number' => ['required'],
+            'branch_id' => ['required'],
         ];
     }
 }

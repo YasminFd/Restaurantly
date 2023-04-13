@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Models\menu_item;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\MealStoreRequest;
@@ -12,10 +11,8 @@ use App\Models\Meal;
 
 class MealController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     */
+
+    // Get all the categories
     public function getCategory()
     {
         $categories = DB::table('categories')
@@ -23,6 +20,11 @@ class MealController extends Controller
             ->get();
         return $categories;
     }
+
+    /**
+     * Display a listing of the meals.
+     *
+     */
     public function index()
     {
         $menus = Meal::all();
@@ -30,7 +32,7 @@ class MealController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new meal.
      */
     public function create()
     {
@@ -39,17 +41,16 @@ class MealController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created meal in storage.
      */
     public function store(MealStoreRequest $req)
     {
-        //
-        $path = 'images\menu'; // the path to the directory you want to store the file in
+        // the path to the directory you want to store the file in
+        $path = 'images\menu';
         $file = $req->image->getClientOriginalName();
         $req->image->move(public_path($path), $file); // get the original file name
 
-        // store the file in the public/images directory
-
+        // Create new meal and store it
         $item = new Meal();
         $item->name = $req->name;
         $item->price = $req->price;
@@ -61,14 +62,7 @@ class MealController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified meal.
      */
     public function edit(string $id)
     {
@@ -78,11 +72,10 @@ class MealController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified meal in storage.
      */
     public function update(Request $req, string $id)
     {
-        //
         $meal = Meal::find($id);
         if ($req->hasFile('image')) {
             $path = public_path($meal->image);
@@ -103,11 +96,10 @@ class MealController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified meal from storage.
      */
     public function destroy(string $id)
     {
-        //
         $meal = Meal::findOrFail($id);
         $path = public_path($meal->image);
         if (File::exists($path)) {

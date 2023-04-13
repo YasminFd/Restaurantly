@@ -3,14 +3,14 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class FromCustomer extends Mailable
-{ use Queueable, SerializesModels;
+{
+    use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
@@ -19,9 +19,10 @@ class FromCustomer extends Mailable
     private $user;
     public function __construct($info)
     {
-        //
-        $this->user=$info;
+        $this->user = $info;
     }
+
+
     /**
      * Get the message envelope.
      */
@@ -29,7 +30,7 @@ class FromCustomer extends Mailable
     {
         return new Envelope(
             subject: 'Customer Service',
-            
+
         );
     }
 

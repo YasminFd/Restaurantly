@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\contactsController;
-use App\Http\Controllers\mailController;
-use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\commentsController;
 use App\Http\Controllers\admin\ReservationController;
 use App\Http\Controllers\admin\TableController;
 use App\Http\Controllers\admin\UsersController;
@@ -15,9 +15,9 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\MealController;
 use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\TestimonialController;
-use App\Http\Controllers\BookTableController;
+use App\Http\Controllers\admin\ordersController;
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\orderController as userOrderController;
 use App\Http\Controllers\ReservationController as userReservationController;
 
 /*
@@ -32,36 +32,31 @@ use App\Http\Controllers\ReservationController as userReservationController;
 |
 */
 
-Route::get('/redirects', [homeController::class, 'display']);
+// Home Routes
 Route::get('/', [homeController::class, 'display'])->name('home.index');
+Route::get('/redirects', [homeController::class, 'display']);
+Route::get('/marks/{id}', [homeController::class, 'mark'])->name('marks');
+
+
+// Contacts Routes
 Route::get('/contact', [contactsController::class, 'display'])->name('home.contact');
-// Nav bar of home page
-Route::post('/contact', [mailController::class, 'send'])->name('contact');
+Route::post('/send', [contactsController::class, 'sendInfo'])->name('contact');
 
-
+// Reservation Routes
 Route::get('/reservations', [userReservationController::class, 'viewReservation'])->name('home.reservations');
+Route::get('/bookReservation', [userReservationController::class, 'addReservation'])->name('bookReservation');
 
-Route::get('/bookTable', [userReservationController::class, 'addTableReservation'])->name('bookTable');
-Route::get('/bookEvent', [userReservationController::class, 'addEventReservation'])->name('bookEvent');
-
+// Menu Routes
 Route::get('/menu', [menuController::class, 'menuItemsForCategory'])->name('home.menu');
 Route::get('/view-meal/{i}', [menuController::class, 'viewMeal'])->name('home.menu.view');
-Route::get('/order/{i}/{total}', [userOrderController::class, 'addOrder'])->name('home.order');
 
+// Cart and Order Routes
 Route::resource('/cart', CartController::class);
 Route::get('/clear/{i}', [CartController::class, 'clear'])->name('clear');
-/*
+Route::get('/order/{i}/{total}', [orderController::class, 'addOrder'])->name('home.order');
 
-
-Route::get('/view-meal/{i}', [menuController::class, 'viewMeal'])->name('home.menu.view');
-Route::post('/add-cart/{i}', [menuController::class, 'addCart'])->name('home.menu.add');
-Route::get('/view-cart/{i}', [menuController::class, 'viewCart'])->name('home.menu.cart');
-Route::get('/remove-cart/{i}', [menuController::class, 'removeCart'])->name('home.menu.remove');
-Route::get('/edit-cart/{i}', [menuController::class, 'editCart'])->name('home.menu.edit');
-*/
-// Nav bar of admin home page
-
-
+// Review Routes
+Route::post('/review', [commentsController::class, 'addReview'])->name('review');
 
 
 Route::middleware([
@@ -76,22 +71,27 @@ Route::middleware([
 
 
 
+// Admin Routes
 Route::middleware(['admin'])->group(function () {
 
+    // Notification Routes
+    Route::get('/admin-notifications', function () {
+        return view('admin.notifications');
+    })->name('admin-notifications');
+    Route::get('/mark/{id}', [AdminController::class, 'mark'])->name('mark');
+    Route::get('/mark-all', [AdminController::class, 'markNotification'])->name('markRead');
+    Route::get('/delete/{id}', [AdminController::class, 'deleteNotification'])->name('delete');
+    Route::get('/delete-all', [AdminController::class, 'deleteNotifications'])->name('deleteAll');
+
+
+    // Resource routes for each type
     Route::resource('admin-reservations', ReservationController::class);
     Route::resource('admin-tables', TableController::class);
-
-    Route::resource('admin-orders', OrderController::class);
+    Route::resource('admin-orders', OrdersController::class);
     Route::resource('admin-users', UsersController::class);
     Route::resource('admin-branches', BranchController::class);
     Route::resource('admin-reviews', ReviewController::class);
-
     Route::resource('admin-meals', MealController::class);
     Route::resource('admin-categories', CategoryController::class);
-
-    Route::resource('admin-orders', OrderController::class);
-
     Route::resource('admin-testimonials', TestimonialController::class);
-
-    Route::resource('admin-users', UsersController::class);
 });

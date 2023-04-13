@@ -1,13 +1,12 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Admin Edit Testimonials')
+@section('title', 'Edit Testimonials')
 
 @section('content')
     <br><br><br>
 
     <div>
-        <form action="{{ route('admin-testimonials.update', $data->id) }}" method="post" 
-            enctype="multipart/form-data">
+        <form action="{{ route('admin-testimonials.update', $data->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div>
@@ -20,7 +19,7 @@
 
                 </div>
             </div>
-            <div class="text-center"><button type="submit" name="send">Edit Testimonial</button></div>
+            <div class="text-center"><button type="submit" name="send" class="add">Edit Testimonial</button></div>
         </form>
     </div>
 @endsection

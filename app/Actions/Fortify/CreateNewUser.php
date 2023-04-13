@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use App\Notifications\TestingNotification;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -26,10 +27,18 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return User::create([
+        $user= User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+        $admin = User::where('user_type', 1)->get();
+        foreach($admin as $admin1)
+        {
+            if ($admin1) {
+            $admin1->notify(new TestingNotification('User: '.$user->name,'new user has been registered!'));
+        }
+        }
+        return $user;
     }
 }

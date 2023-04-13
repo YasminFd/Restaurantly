@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->dateTime('res_date');
-            $table->foreignId('table_id')->constrained('tables');
-            $table->integer('guest_number');
+            $table->string('type');
+            $table->string('message')->nullable();
+            $table->foreignId('table_id')->nullable()->constrained('tables');
+            $table->integer('guest_number')->nullable();
             $table->foreignId('branch_id')->constrained('branches');
         });
     }

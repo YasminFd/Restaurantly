@@ -22,12 +22,11 @@ class MealStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-            'name'=>['required'],
-            'description' =>['required'],
-            'image'=>['required'],
-            'price' =>['required'],
-            'category_id'=>['required']
+            'name' => ['required'],
+            'description' => ['required'],
+            'image' => ['required'],
+            'price' => ['required'],
+            'category_id' => ['required']
         ];
     }
 }

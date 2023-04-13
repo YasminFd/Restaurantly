@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class M extends Model
+class review extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
-        'description',
-        'image',
-        'price',
-        'category_id',
+        'comment',
+        'rating',
+        'meal_id'
     ];
-    public function category()
-    {
-        return $this->belongsTo(category::class);
-    }
-    
-}
 
+    // Each review belongs to only one meal
+    public function meal()
+    {
+        return $this->belongsTo(meal::class);
+    }
+}

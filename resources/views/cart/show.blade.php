@@ -1,64 +1,108 @@
 <x-header>
-    @section('title', 'cart')
+    @section('title', 'Cart')
 </x-header>
 <div>
-    <br><br><br><br><br><br><br><br><br>
+    <br><br><br>
 </div>
-<div>
-    {{ $total = 0 }}
-    <table>
-        <tr>
-            <th>Food Name</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th style="column-span: 2;">Action</th>
-        </tr>
-        @foreach ($data as $item)
-            <tr>
-                {{ $total += $item->price * $item->quantity }}
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->price }}</td>
-                <td>{{ $item->quantity }}</td>
-                <td>
-                    <form action="{{ route('cart.destroy', $item['id']) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">remove</button>
-                    </form>
-                </td>
-                <td><a href="{{ route('cart.edit', $item->id) }}">edit</a></td>
-            </tr>
-        @endforeach
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>TOTAL: {{ $total }}</td>
-        </tr>
-    </table>
+<div class="cart">
+    <?php $total = 0; ?>
+    <div class="cart_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cart_container">
+                        <div class="section-title">
+                            <h2>Shopping Cart</h2>
+                        </div>
+                        <div class="cart_items">
+                            @foreach ($data as $item)
+                                <ul class="cart_list">
 
-    <a href="{{ route('clear', auth()->id()) }}">clear cart</a>
-</div>
-<div allign="center" style="padding:10px;">
-    <button>order now</button>
-
-</div>
-<div>
-    <form action="{{ route('home.order', ['i' => auth()->id(), 'total' => $total]) }}" method="post">
+                                    <li class="cart_item clearfix">
+                                        <div class="cart_item_image"><img src="{{ asset($item->image) }}"
+                                                alt=""></div>
+                                        <div
+                                            class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                            <div class="cart_item_name cart_info_col">
+                                                <div class="cart_item_title">Name</div>
+                                                <div class="cart_item_text">{{ $item->name }}</div>
+                                            </div>
+                                            <div class="cart_item_color cart_info_col">
+                                                <div class="cart_item_title">Quantity</div>
+                                                <div class="cart_item_text">{{ $item->quantity }}</div>
+                                            </div>
+                                            <div class="cart_item_quantity cart_info_col">
+                                                <div class="cart_item_title">Price</div>
+                                                <div class="cart_item_text">{{ $item->price }}</div>
+                                            </div>
+                                            <div class="cart_item_price cart_info_col">
+                                                <div class="cart_item_title">Total</div>
+                                                <div class="cart_item_text">{{ $item->quantity * $item->price }}</div>
+                                            </div>
+                                            <div class="cart_item_total cart_info_col ">
+                                                <div class="cart_item_title">Action</div>
+                                                <div class="cart_item_text d-flex"><a
+                                                        href="{{ route('cart.edit', $item->id) }}"><img
+                                                            src="{{ asset('/images/edit.png') }}" width="15px"
+                                                            alt="Edit logo"></a></div>
+                                                <form action="{{ route('cart.destroy', $item['id']) }}" method="POST"
+                                                    style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"><img src="{{ asset('/images/delete.png') }}"
+                                                            width="19px"alt="Edit logo"></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                        </div>
+                        <?php $total += $item->price * $item->quantity; ?>
+                        @endforeach
+                        <div class="order_total">
+                            <div class="order_total_content text-md-right">
+                                <div class="order_total_title">Order Total:</div>
+                                <div class="order_total_amount">{{ $total }}</div>
+                            </div>
+                        </div>
+                        <div class="cart_buttons"> <a href="{{ route('home.menu') }}"
+                                class="button cart_button_clear">Continue Shopping</a><a
+                                href="{{ route('clear', auth()->id()) }}" class="button cart_button_clear">Clear
+                                Cart</a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="{{ route('home.order', ['i' => auth()->id(), 'total' => $total]) }}" method="get" role="form"
+        class="php-email-form" data-aos="fade-up" data-aos-delay="100">
         @csrf
         @method('GET')
-        <input type="text" name="name" placeholder="name">
-        <input type="text" name="address" placeholder="address">
-        <input type="tel" name="phone number" placeholder="phone number" style="color:#000;">
-        <select name="branch_id" style="background-color: black;">
-            @foreach ($branch as $data)
-                <option value="{{ $data->id }}">{{ $data->name }}</option>
-            @endforeach
-        </select>
-        <input type="submit" value="Order Now">
+        <div class="row ml-2 mr-2">
+            <div class="col-lg-4 col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="First Name"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group">
+                <input type="text" name="address" class="form-control" id="name" placeholder="address"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group">
+                <input type="tel" class="form-control" name="phone_number" id="phone" required
+                    placeholder="Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 ">
+                <select name="branch_id" class="form-control">
+                    @foreach ($branch as $data)
+                        <option value="{{ $data->id }}">{{ $data->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            @if ($total !== 0)
+                <div class="text-center mb-3 "><button type="submit" class="button cart_button_clear send">Order
+                        Now</button></div>
+            @endif
+        </div>
     </form>
 </div>
 <x-footer />
