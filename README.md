@@ -258,4 +258,4 @@ Options include: create, edit, or delete
 
 ---
 
-**All above operations are supported by forms to fill with adequite values concerning the editing and creation of values. With each operation an alert would be shown to confirm success, danger, or warning**
+**All above operations are supported by forms to fill with adequate values concerning the editing and creation of values. With each operation an alert would be shown to confirm success, danger, or warning**
