@@ -22,7 +22,7 @@
                             Price
                         </th>
                         <th scope="col" class="px-6 py-3">
-                           
+
                         </th>
                     </tr>
                 </thead>
@@ -31,7 +31,7 @@
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
-                                {{ $order->order_id}}
+                                {{ $order->order_id }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $order->meal->name }}
@@ -46,8 +46,13 @@
 
                 </tbody>
                 @endforeach
-                <tfoot class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th></th><th></th><th></th><th></th><th>{{ $total }}</th>
+                <tfoot
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>{{ $total }}</th>
                 </tfoot>
             </table>
         </div>

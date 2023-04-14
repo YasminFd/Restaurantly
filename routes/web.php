@@ -17,10 +17,8 @@ use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\ordersController;
 use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\admin\NotificationsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReservationController as userReservationController;
-
 
 /*
 /*
@@ -34,30 +32,33 @@ use App\Http\Controllers\ReservationController as userReservationController;
 |
 */
 
-Route::get('/redirects', [homeController::class, 'display']);
+// Home Routes
 Route::get('/', [homeController::class, 'display'])->name('home.index');
+Route::get('/redirects', [homeController::class, 'display']);
+Route::get('/marks/{id}', [homeController::class, 'mark'])->name('marks');
+
+
+// Contacts Routes
 Route::get('/contact', [contactsController::class, 'display'])->name('home.contact');
-
-
-// Nav bar of home page
 Route::post('/send', [contactsController::class, 'sendInfo'])->name('contact');
 
-
-
+// Reservation Routes
 Route::get('/reservations', [userReservationController::class, 'viewReservation'])->name('home.reservations');
-Route::get('/bookTable', [userReservationController::class, 'addReservation'])->name('bookTable');
-Route::get('/bookEvent', [userReservationController::class, 'addReservation'])->name('bookEvent');
+Route::get('/bookReservation', [userReservationController::class, 'addReservation'])->name('bookReservation');
 
+// Menu Routes
 Route::get('/menu', [menuController::class, 'menuItemsForCategory'])->name('home.menu');
 Route::get('/view-meal/{i}', [menuController::class, 'viewMeal'])->name('home.menu.view');
-Route::get('/order/{i}/{total}', [orderController::class, 'addOrder'])->name('home.order');
 
+// Cart and Order Routes
 Route::resource('/cart', CartController::class);
 Route::get('/clear/{i}', [CartController::class, 'clear'])->name('clear');
+Route::get('/order/{i}/{total}', [orderController::class, 'addOrder'])->name('home.order');
+
+// Review Routes
 Route::post('/review', [commentsController::class, 'addReview'])->name('review');
 
 
-// Nav bar of admin home page
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -67,21 +68,23 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::get('/marks/{id}', [homeController::class, 'mark'])->name('marks');
 
 
+
+// Admin Routes
 Route::middleware(['admin'])->group(function () {
-    //Route::get('/admin', [AdminController::class, 'index'])->name('admin-index');
+
+    // Notification Routes
+    Route::get('/admin-notifications', function () {
+        return view('admin.notifications');
+    })->name('admin-notifications');
     Route::get('/mark/{id}', [AdminController::class, 'mark'])->name('mark');
     Route::get('/mark-all', [AdminController::class, 'markNotification'])->name('markRead');
-
     Route::get('/delete/{id}', [AdminController::class, 'deleteNotification'])->name('delete');
     Route::get('/delete-all', [AdminController::class, 'deleteNotifications'])->name('deleteAll');
 
-    Route::get('/admin-notifications', function(){
-        return view('admin.notifications');
-    })->name('admin-notifications');
 
+    // Resource routes for each type
     Route::resource('admin-reservations', ReservationController::class);
     Route::resource('admin-tables', TableController::class);
     Route::resource('admin-orders', OrdersController::class);
@@ -90,7 +93,5 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('admin-reviews', ReviewController::class);
     Route::resource('admin-meals', MealController::class);
     Route::resource('admin-categories', CategoryController::class);
-    Route::resource('admin-orders', OrdersController::class);
     Route::resource('admin-testimonials', TestimonialController::class);
-    Route::resource('admin-users', UsersController::class);
 });

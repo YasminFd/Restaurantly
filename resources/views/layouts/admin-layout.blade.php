@@ -79,7 +79,7 @@
                 <div class="sidebar-bg-options" id="sidebar-dark-theme">
                     <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
                 </div>
-               
+
             </div>
         </div>
 

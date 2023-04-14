@@ -24,12 +24,15 @@ class Reservation extends Model
         'res_date'
     ];
 
+    // Each reservation belongs to one table
     public function table()
     {
         return $this->belongsTo(Table::class);
     }
 
-    public function branch(){
+    // Each reservation belongs to one branch
+    public function branch()
+    {
         return $this->belongsTo(branch::class);
     }
 }

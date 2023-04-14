@@ -28,7 +28,8 @@
     <div>
         <br><br><br><br>
         <div class="flex justify-end m-2 p-2 ">
-            <a href="{{route('admin-tables.create')}}" class=" px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg text-white ">Add
+            <a href="{{ route('admin-tables.create') }}"
+                class=" px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg text-white ">Add
                 Table</a>
         </div>
         <div class="section-title">

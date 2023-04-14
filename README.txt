@@ -25,7 +25,7 @@ This file is a bash file that will
 
     If you want to change the user or port:
     Go to .env.example and change the DB_USERNAME, DB_PASSWORD, or DB_PORT variables
-
+    
 # Customer Interface
 
     user1: Jana Al Sabeh

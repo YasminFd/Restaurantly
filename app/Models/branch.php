@@ -13,7 +13,10 @@ class branch extends Model
         'location',
         'phone_number'
     ];
+
     use HasFactory;
+
+    // Branch is associated with many tables
     public function tables()
     {
         return $this->hasMany(table::class);

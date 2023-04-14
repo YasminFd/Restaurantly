@@ -6,8 +6,7 @@
     <br><br><br>
 
     <div>
-        <form action="{{ route('admin-testimonials.update', $data->id) }}" method="post" 
-            enctype="multipart/form-data">
+        <form action="{{ route('admin-testimonials.update', $data->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div>

@@ -16,7 +16,6 @@ class MenuItemSeeder extends Seeder
     {
         DB::table('meals')->insert([
             [
-
                 'name' => 'Lobster Bisque',
                 'category_id' => '4',
                 'description' => 'Fresh Lobsters with the best touch of lemons!',

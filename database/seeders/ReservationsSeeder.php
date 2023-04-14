@@ -3,10 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\ReservationType;
-use App\Models\Reservation;
 use Carbon\Carbon;
-use DateTime;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

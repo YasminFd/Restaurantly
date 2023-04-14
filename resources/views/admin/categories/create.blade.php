@@ -6,7 +6,7 @@
     <br><br><br>
 
     <div>
-        <form action="{{route('admin-categories.store')}}" method="post" role="form">
+        <form action="{{ route('admin-categories.store') }}" method="post" role="form">
             @csrf
             <div class="row">
                 <div>

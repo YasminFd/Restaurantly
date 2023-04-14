@@ -80,7 +80,7 @@
                                 <img src={{ asset($item->image) }} height="30" width="30">
                             </td>
                             <td class="px-6 py-4">
-                                @if ($item->category_id == NULL)
+                                @if ($item->category_id == null)
                                     N/A
                                 @else
                                     {{ $item->category->name }}
