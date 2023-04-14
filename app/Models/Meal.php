@@ -25,7 +25,7 @@ class Meal extends Model
     // Meal can belong to many orders
     public function ordered_item()
     {
-        return $this->hasMany(Ordered_item::class);
+        return $this->hasMany(Ordered_item::class,'item_id');
     }
 
     // Meal can have many reviews

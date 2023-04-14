@@ -8,11 +8,15 @@
 @endif
 
 <style>
+    *{
+        color-schema: dark;
+    }
     input,
     textarea {
         margin: 0 10px;
         padding: 10px;
         border-radius: 4% !important;
+        color:black;
     }
 
     div {
@@ -92,11 +96,9 @@
             <em>{{ $average }} / 5</em>
         </div>
         <div class="menu menu-content">
-            <!--<div style="display:flex; flex-direction:column; justify-content:start; align-items:center; gap:15px">
-        -->
             @foreach ($info as $review)
-                <div>
-                    <h4 style="color:#cda45e;">{{ $review->name }}</h4>
+                <div style="margin: 0 0 20px 0;">
+                    <h2 style="color:#cda45e; font-size:30px;">{{ $review->name }}</h2>
                     <p><strong> Review: {{ $review->rating }} / 5</strong></p>
                     <p style="color: #eeecec;"><em>{{ $review->comment }}</em></p>
                 </div>

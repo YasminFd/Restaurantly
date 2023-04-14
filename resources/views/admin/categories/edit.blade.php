@@ -14,7 +14,7 @@
                     <input type="text" name="name" value="{{ $data->name }}" required>
                 </div>
             </div>
-            <div class="text-center"><button type="submit" name="send">Edit Category</button></div>
+            <div class="text-center"><button type="submit" name="send" class="add">Edit Category</button></div>
         </form>
     </div>
 @endsection

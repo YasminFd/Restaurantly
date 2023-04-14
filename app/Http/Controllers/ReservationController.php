@@ -54,6 +54,11 @@ class ReservationController extends Controller
             if ($req->guest_number > $table->guest_number)
                 return back()->with('warning', 'Please choose the table based on the guests number');
 
+            // Table should be the same as the chosen branch
+            $table  = Table::findOrFail($req->table_id);
+            if ($req->branch_id != $table->branch->id)
+                return back()->with('warning', 'Please choose the table based on the branch');
+
             // Table reservation should be between opening hours
             $pickupDate = Carbon::parse($reservation->res_date);
             $pickupTime = Carbon::createFromTime($pickupDate->hour, $pickupDate->minute, $pickupDate->second);
@@ -68,7 +73,7 @@ class ReservationController extends Controller
         $res_date = Carbon::parse($reservation->res_date)->format('Y-m-d');
         foreach ($events as $event) {
             $event_date = Carbon::parse($event->res_date)->format('Y-m-d');
-            if ($res_date == $event_date) {
+            if ($res_date == $event_date && $reservation->branch_id == $event->branch_id) {
                 return back()->with('warning', 'Restaurant is booked at this date, please choose another one');
             }
         }
@@ -84,7 +89,7 @@ class ReservationController extends Controller
                 $admin1->notify(new TestingNotification('Branch: ' . $data->name, 'new reservation has been made!'));
             }
         }
-        
+
         return redirect(route('home.reservations'))->with('success', 'Reservation Complete');
     }
 }

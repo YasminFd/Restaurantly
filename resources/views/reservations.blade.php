@@ -42,7 +42,7 @@
 <!-- Book a Table Section-->
 <section id="book-a-table" class="book-a-table">
     <div class="container" data-aos="fade-up">
-    
+
         <div class="section-title">
             <h2>Reservation</h2>
             <p>Book a Table</p>
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 form-group mt-3 ">
-                    <select name="branch_id" class="form-control">
+                    <select name="branch_id" class="form-control" id="branch">
                         @foreach ($branches as $branch)
                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                         @endforeach
@@ -96,10 +96,9 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 form-group mt-3">
-                    <select name="table_id" class="form-control">
+                    <select name="table_id" class="form-control" id="table">
                         @foreach ($tables as $table)
-                            <option value="{{ $table->id }}">{{ $table->name }} ({{ $table->guest_number }} Guests)
-                            </option>
+                        <option value="{{ $table->id }}">{{ $table->name }} ({{$table->guest_number}} Guests) ({{$table->branch->name}})</option>
                         @endforeach
                     </select>
                     <div class="validate"></div>

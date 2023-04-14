@@ -105,6 +105,8 @@ class MealController extends Controller
         if (File::exists($path)) {
             File::delete($path);
         }
+
+        $meal->ordered_item()->delete();
         $meal->delete();
         return redirect(route('admin-meals.index'))->with('danger', 'Meal deleted successfully');
     }
