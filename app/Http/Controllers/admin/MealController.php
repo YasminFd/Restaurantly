@@ -107,6 +107,7 @@ class MealController extends Controller
         }
 
         $meal->ordered_item()->delete();
+        $meal->reviews()->delete();
         $meal->delete();
         return redirect(route('admin-meals.index'))->with('danger', 'Meal deleted successfully');
     }
