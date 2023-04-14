@@ -21,10 +21,10 @@ This file is a bash file that will
 6.  Start php artisan serve
 7.  Go to the localhost
 
-**Note: The default user is root**
+**Note: The default user is root & port 3306**
 
-    If you want to change the user:
-    Go to env.example and change the DB_USERNAME & DB_PASSWORD variables
+    If you want to change the user or port:
+    Go to .env.example and change the DB_USERNAME, DB_PASSWORD, or DB_PORT variables
 
 # Customer Interface
 
