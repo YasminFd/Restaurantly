@@ -41,6 +41,8 @@ class UsersController extends Controller
         //
         $user = new user();
         $user->name=$req->name;
+        if(User::where('email',$req->email)->first())
+        return redirect(route('admin-users.index'))->with('danger','email already signed in!');
         $user->email=$req->email;
         $user->password=Hash::make($req->password);
         $user->user_type=1;
@@ -93,6 +95,6 @@ class UsersController extends Controller
         
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect(route('admin-users.index'))->with('danger', 'Employee deleted successfully');
+        return redirect(route('admin-users.index'))->with('danger', 'User deleted successfully');
     }
 }
