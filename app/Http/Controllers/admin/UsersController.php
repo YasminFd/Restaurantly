@@ -34,11 +34,13 @@ class UsersController extends Controller
     public function store(Request $req)
     {
         $user = new user();
-        $user->name = $req->name;
-        $user->email = $req->email;
-        $user->password = Hash::make($req->password);
-        $user->user_type = 1;
-        $user->created_at = now();
+        $user->name=$req->name;
+        if(User::where('email',$req->email)->first())
+        return redirect(route('admin-users.index'))->with('danger','email already signed in!');
+        $user->email=$req->email;
+        $user->password=Hash::make($req->password);
+        $user->user_type=1;
+        $user->created_at= now();
         $user->updated_at = now();
         $user->save();
         return redirect(route('admin-users.index'))->with('success', 'employee created successfully');
@@ -72,6 +74,6 @@ class UsersController extends Controller
         // Delete user
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect(route('admin-users.index'))->with('danger', 'Employee deleted successfully');
+        return redirect(route('admin-users.index'))->with('danger', 'User deleted successfully');
     }
 }
